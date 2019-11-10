@@ -12,3 +12,9 @@ def index(request):
     template = loader.get_template('search/index.html')
     context = {}
     return HttpResponse(template.render(context, request))
+
+
+def results(request):
+    template = loader.get_template('search/results.html')
+    context = {}
+    return HttpResponse(template.render(context, request))
