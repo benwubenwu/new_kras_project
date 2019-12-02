@@ -1,20 +1,19 @@
 from django.shortcuts import render
 from django.views.generic import TemplateView
-from graphs import plots
+from . import plots
+from .models import Colon
 # Create your views here.
 
 
-# class SimpleCandlestickWithPandas(TemplateView):
+def graphs(request):
+    colon_data = Colon.objects.all()
+    return render(request, "graphs/graphs.html", {'colon_data': colon_data})
+
+
+# class BoxPlot(TemplateView):
 #     template_name = 'plot.html'
 
 #     def get_context_data(self, **kwargs):
-#         context = super(SimpleCandlestickWithPandas,
-#                         self).get_context_data(**kwargs)
-#         context['simplecandlestick'] = plots.get_simple_candlestick()
-#         context['3dplot'] = plots.get_topographical_3D_surface_plot()
-#         context['piechart'] = plots.pie_chart()
+#         context = super(BoxPlot, self).get_context_data(**kwargs)
+#         context['boxplot'] = plots.get_box_plot()
 #         return context
-
-
-def graphs(request):
-    return render(request, "graphs/graphs.html", context=get_context_data)

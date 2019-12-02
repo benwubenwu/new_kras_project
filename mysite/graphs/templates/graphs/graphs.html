@@ -30,10 +30,12 @@
         <h1>Name of protein</h1>
       </div>
       <div class="jumbotron">
-        <div class="card-body">
-            <!-- <h5 class="card-title">Candlestick Graph</h5>
-          {{simplecandlestick|safe}} -->
+        <div class="colon_data">
+        {% for data in colon_data %}
+        <p>{{data.gene_symbol}}</p>
+        {% endfor %}
         </div>
+        <p>test</p>
       </div>
         </div>
       </div>

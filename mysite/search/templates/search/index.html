@@ -16,22 +16,54 @@
       crossorigin="anonymous"
     />
 
-    <title>KRAS search</title>
+    <title>Gene Search</title>
   </head>
   <body>
-      <nav class="navbar navbar-light bg-light">
-          <a class="navbar-brand" href="#">
-            <img src="https://storage.needpix.com/rsynced_images/dna-icon-2316641_1280.png" width="30" height="30" class="d-inline-block align-top" alt="">
-            Park Lab
-          </a>
-        </nav>
+    <nav class="navbar navbar-light bg-light">
+      <a class="navbar-brand" href="#">
+        <img
+          src="https://storage.needpix.com/rsynced_images/dna-icon-2316641_1280.png"
+          width="30"
+          height="30"
+          class="d-inline-block align-top"
+          alt=""
+        />
+        Park Lab
+      </a>
+      <a class="nav-item" href="#">About</a>
+      <a class="nav-item" href="#">Download</a>
+      <a class="nav-item" href="#">Contact</a>
+    </nav>
     <div class="container">
       <div class="page-header">
-        <h1>KRAS search</h1>
+        <h1>Gene Search</h1>
       </div>
       <div class="jumbotron">
-        <div class="input-group input-group-lg">
-          <input type="text" class = "form-control" placeholder = "KRAS"></div><br>
+        <!-- <div class="input-group input-group-lg">
+          <input type="text" class = "form-control" placeholder = ""></div><br>
+        </div> -->
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <button
+              class="btn btn-outline-secondary dropdown-toggle"
+              type="button"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
+              Dropdown
+            </button>
+            <div class="dropdown-menu">
+              <a class="dropdown-item">Gene Symbol</a>
+              <a class="dropdown-item">Protein ID</a>
+              <a class="dropdown-item">Description</a>
+            </div>
+          </div>
+          <input
+            type="text"
+            class="form-control"
+            aria-label="Text input with dropdown button"
+          />
         </div>
       </div>
     </div>
