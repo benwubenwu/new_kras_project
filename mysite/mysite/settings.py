@@ -90,16 +90,16 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': '/Users/benjaminwu/Desktop/kras_project/mysite/genes.db',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     },
-    'genes': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': '/Users/benjaminwu/Desktop/kras_project/mysite/genes.db',
-        'USER': '',
-        'PASSWORD': '',
-        'HOST': '',
-        'PORT': '',
-    },
+    # 'genes': {
+    #     'ENGINE': 'django.db.backends.sqlite3',
+    #     'NAME': '/Users/benjaminwu/Desktop/kras_project/mysite/genes.db',
+    #     'USER': '',
+    #     'PASSWORD': '',
+    #     'HOST': '',
+    #     'PORT': '',
+    # },
 }
 
 
