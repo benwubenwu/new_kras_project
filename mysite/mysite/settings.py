@@ -133,7 +133,7 @@ USE_TZ = True
 STATICFILES_LOCATION = 'static'
 STATIC_URL = '/static/'
 STATIC_ROOT = 'static'
-STATICFILES_DIRS = {
+STATICFILES_DIRS = [
     os.path.join(
         BASE_DIR, 'mysite/mysite/static')
-}
+]
