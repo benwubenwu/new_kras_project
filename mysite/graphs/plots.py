@@ -4,7 +4,7 @@ import plotly.express as px
 import pandas as pd
 from datetime import datetime
 import requests
-from .models import Colon
+from .models import ColonData
 
 
 # def get_data():

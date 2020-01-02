@@ -74,39 +74,41 @@ class AuthUserUserPermissions(models.Model):
         unique_together = (('user', 'permission'),)
 
 
-class Colon(models.Model):
-    # Field name made lowercase. Field renamed to remove unsuitable characters.
+class ColonData(models.Model):
+    # Field name made lowercase.
+    id = models.TextField(db_column='Id', blank=False,
+                          null=False, primary_key=True)
+    # Field name made lowercase.
+    protein_id = models.TextField(
+        db_column='Protein_Id', blank=True, null=True)
+    # Field name made lowercase.
     gene_symbol = models.TextField(
-        db_column='Gene Symbol', blank=True, null=True)
-    control1 = models.DecimalField(
-        blank=True, null=True, decimal_places=5, max_digits=10)
-    control2 = models.DecimalField(
-        blank=True, null=True, decimal_places=5, max_digits=10)
-    control3 = models.DecimalField(
-        blank=True, null=True, decimal_places=5, max_digits=10)
-    control4 = models.DecimalField(
-        blank=True, null=True, decimal_places=5, max_digits=10)
-    control5 = models.DecimalField(
-        blank=True, null=True, decimal_places=5, max_digits=10)
+        db_column='Gene_Symbol', blank=True, null=True)
     # Field name made lowercase.
-    kras1 = models.DecimalField(
-        db_column='KRAS1', blank=True, null=True, decimal_places=5, max_digits=10)
+    description = models.TextField(
+        db_column='Description', blank=True, null=True)
     # Field name made lowercase.
-    kras2 = models.DecimalField(
-        db_column='KRAS2', blank=True, null=True, decimal_places=5, max_digits=10)
+    number_of_peptides = models.TextField(
+        db_column='Number_of_peptides', blank=True, null=True)
+    control1 = models.TextField(blank=True, null=True)
+    control2 = models.TextField(blank=True, null=True)
+    control3 = models.TextField(blank=True, null=True)
+    control4 = models.TextField(blank=True, null=True)
+    control5 = models.TextField(blank=True, null=True)
     # Field name made lowercase.
-    kras3 = models.DecimalField(
-        db_column='KRAS3', blank=True, null=True, decimal_places=5, max_digits=10)
+    kras1 = models.TextField(db_column='KRAS1', blank=True, null=True)
     # Field name made lowercase.
-    kras4 = models.DecimalField(
-        db_column='KRAS4', blank=True, null=True, decimal_places=5, max_digits=10)
+    kras2 = models.TextField(db_column='KRAS2', blank=True, null=True)
     # Field name made lowercase.
-    kras5 = models.DecimalField(
-        db_column='KRAS5', blank=True, null=True, decimal_places=5, max_digits=10)
+    kras3 = models.TextField(db_column='KRAS3', blank=True, null=True)
+    # Field name made lowercase.
+    kras4 = models.TextField(db_column='KRAS4', blank=True, null=True)
+    # Field name made lowercase.
+    kras5 = models.TextField(db_column='KRAS5', blank=True, null=True)
 
     class Meta:
         managed = False
-        db_table = 'colon'
+        db_table = 'colon_data'
 
 
 class DjangoAdminLog(models.Model):
@@ -144,6 +146,30 @@ class DjangoMigrations(models.Model):
         db_table = 'django_migrations'
 
 
+class DjangoPlotlyDashDashapp(models.Model):
+    instance_name = models.CharField(unique=True, max_length=100)
+    slug = models.CharField(unique=True, max_length=110)
+    base_state = models.TextField()
+    creation = models.DateTimeField()
+    update = models.DateTimeField()
+    save_on_change = models.BooleanField()
+    stateless_app = models.ForeignKey(
+        'DjangoPlotlyDashStatelessapp', models.DO_NOTHING)
+
+    class Meta:
+        managed = False
+        db_table = 'django_plotly_dash_dashapp'
+
+
+class DjangoPlotlyDashStatelessapp(models.Model):
+    app_name = models.CharField(unique=True, max_length=100)
+    slug = models.CharField(unique=True, max_length=110)
+
+    class Meta:
+        managed = False
+        db_table = 'django_plotly_dash_statelessapp'
+
+
 class DjangoSession(models.Model):
     session_key = models.CharField(primary_key=True, max_length=40)
     session_data = models.TextField()
@@ -152,34 +178,6 @@ class DjangoSession(models.Model):
     class Meta:
         managed = False
         db_table = 'django_session'
-
-
-class GraphsGene(models.Model):
-    gene_symbol = models.CharField(max_length=100)
-    # max_digits and decimal_places have been guessed, as this database handles decimal fields as float
-    control1 = models.DecimalField(max_digits=10, decimal_places=5)
-    # max_digits and decimal_places have been guessed, as this database handles decimal fields as float
-    control2 = models.DecimalField(max_digits=10, decimal_places=5)
-    # max_digits and decimal_places have been guessed, as this database handles decimal fields as float
-    control3 = models.DecimalField(max_digits=10, decimal_places=5)
-    # max_digits and decimal_places have been guessed, as this database handles decimal fields as float
-    control4 = models.DecimalField(max_digits=10, decimal_places=5)
-    # max_digits and decimal_places have been guessed, as this database handles decimal fields as float
-    control5 = models.DecimalField(max_digits=10, decimal_places=5)
-    # max_digits and decimal_places have been guessed, as this database handles decimal fields as float
-    kras1 = models.DecimalField(max_digits=10, decimal_places=5)
-    # max_digits and decimal_places have been guessed, as this database handles decimal fields as float
-    kras2 = models.DecimalField(max_digits=10, decimal_places=5)
-    # max_digits and decimal_places have been guessed, as this database handles decimal fields as float
-    kras3 = models.DecimalField(max_digits=10, decimal_places=5)
-    # max_digits and decimal_places have been guessed, as this database handles decimal fields as float
-    kras4 = models.DecimalField(max_digits=10, decimal_places=5)
-    # max_digits and decimal_places have been guessed, as this database handles decimal fields as float
-    kras5 = models.DecimalField(max_digits=10, decimal_places=5)
-
-    class Meta:
-        managed = False
-        db_table = 'graphs_gene'
 
 
 class SearchProtein(models.Model):
