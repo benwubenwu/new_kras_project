@@ -12,7 +12,7 @@ def search(request):
 
 def graphs(request):
     colon_data = ColonData.objects.all()
-    gene1 = ColonData.objects.get(id=1)
+    gene1 = ColonData.objects.get(id=5)
     gene1name = gene1.gene_symbol
     gene1control1 = gene1.control1
     gene1control2 = gene1.control2
