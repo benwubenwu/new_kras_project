@@ -6,9 +6,26 @@ import plotly.graph_objects as go
 # Create your views here.
 
 
+def search(request):
+    return render(request, "graphs/search.html")
+
+
 def graphs(request):
     colon_data = ColonData.objects.all()
     gene1 = ColonData.objects.get(id=1)
+    gene1name = gene1.gene_symbol
+    gene1control1 = gene1.control1
+    gene1control2 = gene1.control2
+    gene1control3 = gene1.control3
+    gene1control4 = gene1.control4
+    gene1control5 = gene1.control5
+
+    gene1kras1 = gene1.kras1
+    gene1kras2 = gene1.kras2
+    gene1kras3 = gene1.kras3
+    gene1kras4 = gene1.kras4
+    gene1kras5 = gene1.kras5
+    # gene1 = ColonData.objects.get(id=1)
     # def scatter():
     #     x1 = [1, 2, 3, 4]
     #     y1 = [30, 35, 25, 45]
@@ -27,11 +44,12 @@ def graphs(request):
     #     return plot_div
 
     def box():
-        y0 = [1, 3, 5, 7, 9, 11]
-        y1 = [2, 4, 6, 8, 10, 12]
+        y0 = [gene1control1, gene1control2,
+              gene1control3, gene1control4, gene1control5]
+        y1 = [gene1kras1, gene1kras2, gene1kras3, gene1kras4, gene1kras5]
 
         layout = dict(
-            title='Gene Name',
+            title=gene1name,
         )
         fig = go.Figure(layout=layout)
         fig.add_trace(go.Box(y=y0, name='Control',
@@ -44,6 +62,7 @@ def graphs(request):
     context = {
         'plot': box(),
         'colon_data': colon_data,
-        'gene1': gene1
+        'gene1name': gene1name
+
     }
     return render(request, "graphs/graphs.html", context)
