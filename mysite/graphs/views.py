@@ -1,6 +1,5 @@
 from django.shortcuts import render
 from django.views.generic import TemplateView
-# from . import plots
 from .models import ColonData
 from plotly.offline import plot
 import plotly.graph_objects as go
@@ -9,7 +8,7 @@ import plotly.graph_objects as go
 
 def graphs(request):
     colon_data = ColonData.objects.all()
-
+    gene1 = ColonData.objects.get(id=1)
     # def scatter():
     #     x1 = [1, 2, 3, 4]
     #     y1 = [30, 35, 25, 45]
@@ -32,18 +31,19 @@ def graphs(request):
         y1 = [2, 4, 6, 8, 10, 12]
 
         layout = dict(
-            title='Simple Boxplot',
+            title='Gene Name',
         )
         fig = go.Figure(layout=layout)
-        fig.add_trace(go.Box(y=y0, name='Sample A', marker_color='indianred'))
-        fig.add_trace(go.Box(y=y1, name='Sample B',
-                             marker_color='lightseagreen'))
+        fig.add_trace(go.Box(y=y0, name='Control',
+                             marker_color='indianred', boxpoints='all'))
+        fig.add_trace(go.Box(y=y1, name='Mutant',
+                             marker_color='lightseagreen', boxpoints='all'))
         plot_div = plot(fig, output_type='div', include_plotlyjs=False)
         return plot_div
 
     context = {
         'plot': box(),
-        'colon_data':  colon_data
+        'colon_data': colon_data,
+        'gene1': gene1
     }
     return render(request, "graphs/graphs.html", context)
-    # return render(request, "graphs/graphs.html", {'colon_data': colon_data})

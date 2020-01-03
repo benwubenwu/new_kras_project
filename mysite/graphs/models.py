@@ -186,3 +186,7 @@ class SearchProtein(models.Model):
     class Meta:
         managed = False
         db_table = 'search_protein'
+
+
+# def __str__(self):
+#     return self.name
