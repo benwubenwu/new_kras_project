@@ -3,7 +3,10 @@ from django.views.generic import TemplateView
 from .models import ColonData
 from plotly.offline import plot
 import plotly.graph_objects as go
+from django.http import HttpRequest
 # Create your views here.
+
+protein_id = "asdf"
 
 
 def search(request):
@@ -20,13 +23,17 @@ def search_results(request):
         'colon_data': colon_data
     }
 
-    def get_queryset(self):
-        return ColonData.objects.filter(gene_symbol__icontains='asdfasdfadsf')
+    protein_id = request.POST.get('protein_id')
+    print(protein_id)
+
+    def get_protein_id():
+        return protein_id
 
     return render(request, "graphs/search_results.html", context)
 
 
 def graphs(request):
+    print(protein_id)
     colon_data = ColonData.objects.all()
     gene1 = ColonData.objects.get(id=5)
     gene1name = gene1.gene_symbol

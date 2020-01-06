@@ -11,7 +11,7 @@
           <div class="card-body">
             <div class="table-responsive">
               <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                <thead>
+                <thead class="text-white bg-info">
                   <tr>
                     <th>Gene Symbol</th>
                     <th>Protein ID</th>
@@ -23,7 +23,13 @@
                 {% for data in colon_data %}
                   <tr>
                     <td>{{ data.gene_symbol }}</td>
-                    <td>{{ data.protein_id }}</td>
+                    <td>
+                    <form method="post" action="{% url 'graphs' %}">
+                      {% csrf_token %}
+                      <input type="submit" class="btn btn-link" id="protein_id" name="protein_id" value="{{ data.protein_id }}">
+                      {% comment %} onclick="location.href='{% url 'graphs' %}';" {% endcomment %}
+                    </form>
+                    </td>
                     <td>{{ data.description }}</td>
                     {% if "MOUSE" in data.description %}
                     <td> Mouse </td>
