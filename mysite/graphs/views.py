@@ -7,11 +7,23 @@ import plotly.graph_objects as go
 
 
 def search(request):
-    return render(request, "graphs/search.html")
+    colon_data = ColonData.objects.all()
+    context = {
+        'colon_data': colon_data
+    }
+    return render(request, "graphs/search.html", context)
 
 
 def search_results(request):
-    return render(request, "graphs/search_results.html")
+    colon_data = ColonData.objects.all()
+    context = {
+        'colon_data': colon_data
+    }
+
+    def get_queryset(self):
+        return ColonData.objects.filter(gene_symbol__icontains='asdfasdfadsf')
+
+    return render(request, "graphs/search_results.html", context)
 
 
 def graphs(request):
