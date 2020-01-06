@@ -3,19 +3,37 @@
 {% load static %} 
 {% block content%}
 {% load plotly_dash %}
-<h1>{{ gene1name }}</h1>
-<div class="card mx-auto" style="height: 100%; width: 80%">
+
+{% comment %} <h1 class="text-center">{{ gene1name }}</h1> {% endcomment %}
+
+{% comment %} <div class="card" style="height: 100%; width: 100%">
 {{ plot | safe }}
-</div>
+</div> {% endcomment %}
 {% comment %} <div class="{% plotly_class name="SimpleExample" %} card" style="height: 100%; width: 100%">
     {% plotly_app name="SimpleExample" ratio=0.65 %}
-</div> {% endcomment %}
+</div>  {% endcomment %}
 <br>
-{{ plot | safe }}
 
-<div class="row colon_data">
+<div class="card text-center" style="height: 100%; width: 100%">
+  <div class="card-header">
+    {{ gene1name }}
+  </div>
+  <div class="card-body">
+    {{ plot | safe }}
+  </div>
+  <div class="card-footer text-muted">
+    Date updated: 
+  </div>
+</div>
+
+
+
+{% comment %} <div class="row colon_data">
 {% for data in colon_data %}
 <p>{{data.gene_symbol}}</p>
 {% endfor %}
-</div>
-{% endblock %}
+</div> {% endcomment %}
+{% endblock %} 
+
+
+{% comment %} mx-auto {% endcomment %}

@@ -10,6 +10,10 @@ def search(request):
     return render(request, "graphs/search.html")
 
 
+def search_results(request):
+    return render(request, "graphs/search_results.html")
+
+
 def graphs(request):
     colon_data = ColonData.objects.all()
     gene1 = ColonData.objects.get(id=5)
@@ -50,12 +54,13 @@ def graphs(request):
 
         layout = dict(
             title=gene1name,
+            template="plotly_white",
         )
         fig = go.Figure(layout=layout)
         fig.add_trace(go.Box(y=y0, name='Control',
-                             marker_color='indianred', boxpoints='all'))
+                             marker_color='rgba(0, 102, 255, 1.0)', boxpoints='all'))
         fig.add_trace(go.Box(y=y1, name='Mutant',
-                             marker_color='lightseagreen', boxpoints='all'))
+                             marker_color='rgba(153, 204, 255, 1.0)', boxpoints='all'))
         plot_div = plot(fig, output_type='div', include_plotlyjs=False)
         return plot_div
 
