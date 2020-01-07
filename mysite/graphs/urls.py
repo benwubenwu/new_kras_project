@@ -3,7 +3,8 @@ from graphs import views
 from graphs.dash_apps.finished_apps import simpleexample
 # from mysite.graphs.dash_apps.finished_apps import boxplot
 urlpatterns = [
-    path('', views.graphs, name='graphs'),
+    path('graphs', views.graphs, name='graphs'),
     path('search_results', views.search_results, name="search_results"),
     path('search', views.search, name='test'),
+    path('test/<protein_id>', views.graphs)
 ]

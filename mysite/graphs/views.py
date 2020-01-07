@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.views.generic import TemplateView
 from .models import ColonData
 from plotly.offline import plot
@@ -19,23 +19,22 @@ def search(request):
 
 def search_results(request):
     colon_data = ColonData.objects.all()
+
     context = {
         'colon_data': colon_data
     }
 
     protein_id = request.POST.get('protein_id')
-    print(protein_id)
-
-    def get_protein_id():
-        return protein_id
 
     return render(request, "graphs/search_results.html", context)
 
 
-def graphs(request):
-    print(protein_id)
+def graphs(request, protein_id):
+
     colon_data = ColonData.objects.all()
-    gene1 = ColonData.objects.get(id=5)
+
+    gene1 = ColonData.objects.get(protein_id=protein_id)
+
     gene1name = gene1.gene_symbol
     gene1control1 = gene1.control1
     gene1control2 = gene1.control2
@@ -48,23 +47,6 @@ def graphs(request):
     gene1kras3 = gene1.kras3
     gene1kras4 = gene1.kras4
     gene1kras5 = gene1.kras5
-    # gene1 = ColonData.objects.get(id=1)
-    # def scatter():
-    #     x1 = [1, 2, 3, 4]
-    #     y1 = [30, 35, 25, 45]
-
-    #     trace = go.Scatter(
-    #         x=x1,
-    #         y=y1
-    #     )
-    #     layout = dict(
-    #         title='Simple Graph',
-    #         xaxis=dict(range=[min(x1), max(x1)]),
-    #         yaxis=dict(range=[min(y1), max(y1)]),
-    #     )
-    #     fig = go.Figure(data=[trace], layout=layout)
-    #     plot_div = plot(fig, output_type='div', include_plotlyjs=False)
-    #     return plot_div
 
     def box():
         y0 = [gene1control1, gene1control2,

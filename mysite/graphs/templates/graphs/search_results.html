@@ -24,11 +24,10 @@
                   <tr>
                     <td>{{ data.gene_symbol }}</td>
                     <td>
-                    <form method="post" action="{% url 'graphs' %}">
-                      {% csrf_token %}
-                      <input type="submit" class="btn btn-link" id="protein_id" name="protein_id" value="{{ data.protein_id }}">
+                      {{data.protein_id}}
+                      {% comment %} <a href="{% url 'test' data.protein_id %}">{{ data.protein_id }}</a> {% endcomment %}
+                      {% comment %} <a id="protein_id" name="protein_id" value="{{ data.protein_id }}" onclick="location.href='{% url 'graphs/test/{{ data.protein_id }}' %}';"></a> {% endcomment %}
                       {% comment %} onclick="location.href='{% url 'graphs' %}';" {% endcomment %}
-                    </form>
                     </td>
                     <td>{{ data.description }}</td>
                     {% if "MOUSE" in data.description %}
