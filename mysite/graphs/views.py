@@ -11,20 +11,21 @@ protein_id = "asdf"
 
 
 def search(request):
-    # user_input = request.GET.get('user_input')
-    # print(user_input)
     return render(request, "graphs/search.html")
 
 
 def search_results(request):
 
     query = request.GET.get('user_input')
+    # if query == None and request.method == 'GET':
+    #     colon_data = ColonData.objects.all()
+
     if query and request.method == 'GET':
         colon_data = ColonData.objects.filter(
             Q(protein_id__icontains=query) | Q(
                 gene_symbol__icontains=query) | Q(description__icontains=query)
         )
-    # colon_data = ColonData.objects.all()
+
     context = {
         'colon_data': colon_data
     }
@@ -34,7 +35,7 @@ def search_results(request):
 
 def graphs(request, id):
 
-    colon_data = ColonData.objects.all()
+    # colon_data = ColonData.objects.all()
 
     gene1 = ColonData.objects.get(id=id)
 
@@ -70,7 +71,7 @@ def graphs(request, id):
 
     context = {
         'plot': box(),
-        'colon_data': colon_data,
+        # 'colon_data': colon_data,
         'gene1name': gene1name
 
     }
