@@ -29,11 +29,11 @@ def search_results(request):
     return render(request, "graphs/search_results.html", context)
 
 
-def graphs(request, protein_id):
+def graphs(request, id):
 
     colon_data = ColonData.objects.all()
 
-    gene1 = ColonData.objects.get(protein_id=protein_id)
+    gene1 = ColonData.objects.get(id=id)
 
     gene1name = gene1.gene_symbol
     gene1control1 = gene1.control1

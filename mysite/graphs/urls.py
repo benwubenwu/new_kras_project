@@ -5,6 +5,6 @@ from graphs.dash_apps.finished_apps import simpleexample
 urlpatterns = [
     path('graphs', views.graphs, name='graphs'),
     path('search_results', views.search_results, name="search_results"),
-    path('search', views.search, name='test'),
-    path('test/<protein_id>', views.graphs)
+    path('search', views.search, name='search'),
+    path('test/<int:id>', views.graphs, name='test')
 ]
