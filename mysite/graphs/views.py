@@ -24,8 +24,6 @@ def search_results(request):
         'colon_data': colon_data
     }
 
-    protein_id = request.POST.get('protein_id')
-
     return render(request, "graphs/search_results.html", context)
 
 
