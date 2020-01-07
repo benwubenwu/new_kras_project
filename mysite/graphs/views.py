@@ -4,22 +4,27 @@ from .models import ColonData
 from plotly.offline import plot
 import plotly.graph_objects as go
 from django.http import HttpRequest
+from django.db.models import Q
 # Create your views here.
 
 protein_id = "asdf"
 
 
 def search(request):
-    colon_data = ColonData.objects.all()
-    context = {
-        'colon_data': colon_data
-    }
-    return render(request, "graphs/search.html", context)
+    # user_input = request.GET.get('user_input')
+    # print(user_input)
+    return render(request, "graphs/search.html")
 
 
 def search_results(request):
-    colon_data = ColonData.objects.all()
 
+    query = request.GET.get('user_input')
+    if query and request.method == 'GET':
+        colon_data = ColonData.objects.filter(
+            Q(protein_id__icontains=query) | Q(
+                gene_symbol__icontains=query) | Q(description__icontains=query)
+        )
+    # colon_data = ColonData.objects.all()
     context = {
         'colon_data': colon_data
     }

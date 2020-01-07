@@ -29,9 +29,6 @@
                     <td>{{ data.gene_symbol }}</td>
                     <td>
                       {{data.protein_id}}
-                      {% comment %} <a href="{% url 'test' arg=data.protein_id %}"> {{data.protein_id}} </a> {% endcomment %}
-                      {% comment %} <a id="protein_id" name="protein_id" value="{{ data.protein_id }}" onclick="location.href='{% url 'graphs/test/{{ data.protein_id }}' %}';"></a> {% endcomment %}
-                      {% comment %} onclick="location.href='{% url 'graphs' %}';" {% endcomment %}
                     </td>
                     <td>{{ data.description }}</td>
                     {% if "MOUSE" in data.description %}
