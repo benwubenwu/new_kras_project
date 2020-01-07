@@ -25,10 +25,14 @@ def search_results(request):
             Q(protein_id__icontains=query) | Q(
                 gene_symbol__icontains=query) | Q(description__icontains=query)
         )
-
-    context = {
-        'colon_data': colon_data
-    }
+        context = {
+            'colon_data': colon_data
+        }
+    else:
+        colon_data = ColonData.objects.all()
+        context = {
+            'colon_data': colon_data
+        }
 
     return render(request, "graphs/search_results.html", context)
 

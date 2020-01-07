@@ -38,7 +38,7 @@
           alt=""
         />
       </a>
-    <a class="navbar-brand mr-1" href="index.html">Park Lab</a>
+    <a class="navbar-brand mr-1" href="{% url 'search' %}">Park Lab</a>
 
 
     <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
@@ -46,11 +46,11 @@
     </button>
 
     <!-- Navbar Search -->
-    <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
+    <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0" action="{% url 'search_results' %}">
       <div class="input-group">
-        <input type="text" class="form-control" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
+        <input type="text" class="form-control" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2" name="user_input">
         <div class="input-group-append">
-          <button class="btn btn-info" type="button">
+          <button class="btn btn-info" type="submit">
             <i class="fas fa-search"></i>
           </button>
         </div>
@@ -132,7 +132,7 @@
       <li class="nav-item">
         <a class="nav-link" href="tables.html">
           <i class="fas fa-fw fa-table"></i>
-          <span>Tables</span></a>
+          <span>Download</span></a>
       </li>
     </ul>
 
