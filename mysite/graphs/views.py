@@ -1,13 +1,12 @@
 from django.shortcuts import render, get_object_or_404
 from django.views.generic import TemplateView
-from .models import ColonData
+from .models import ColonData, PancreasTumorPro, ScrapedColonPro, WholePancreasPro, ColonTumorPro, AllPro
 from plotly.offline import plot
 import plotly.graph_objects as go
 from django.http import HttpRequest
 from django.db.models import Q
-# Create your views here.
 
-protein_id = "asdf"
+# Create your views here.
 
 
 def search(request):
@@ -17,66 +16,135 @@ def search(request):
 def search_results(request):
 
     query = request.GET.get('user_input')
-    # if query == None and request.method == 'GET':
-    #     colon_data = ColonData.objects.all()
 
     if query and request.method == 'GET':
-        colon_data = ColonData.objects.filter(
+        all_pro = AllPro.objects.filter(
             Q(protein_id__icontains=query) | Q(
-                gene_symbol__icontains=query) | Q(description__icontains=query)
-        )
+                gene_symbol__icontains=query) | Q(description__icontains=query))
         context = {
-            'colon_data': colon_data
+            'all_pro': all_pro
         }
     else:
-        colon_data = ColonData.objects.all()
+        all_pro = AllPro.objects.all()
         context = {
-            'colon_data': colon_data
+            'all_pro': all_pro
         }
 
     return render(request, "graphs/search_results.html", context)
 
 
 def graphs(request, id):
+    # protein/gene info
+    all_pro = AllPro.objects.get(id=id)
+    gene_symbol = all_pro.gene_symbol
+    description = all_pro.description
+    protein_id = all_pro.protein_id
 
-    # colon_data = ColonData.objects.all()
+    if PancreasTumorPro.objects.get(id=id):
+        pancreas_tumor_pro = PancreasTumorPro.objects.get(id=id)
+        pancreas_tumor_pro_pdx_1 = pancreas_tumor_pro.pdx_1
+        pancreas_tumor_pro_pdx_2 = pancreas_tumor_pro.pdx_2
+        pancreas_tumor_pro_pdx_3 = pancreas_tumor_pro.pdx_3
+        pancreas_tumor_pro_pdxp53_1 = pancreas_tumor_pro.pdxp53_1
+        pancreas_tumor_pro_pdxp53_2 = pancreas_tumor_pro.pdxp53_2
+        pancreas_tumor_pro_pdxp53_3 = pancreas_tumor_pro.pdxp53_3
+        pancreas_tumor_pro_d314 = pancreas_tumor_pro.d314
+        pancreas_tumor_pro_d693 = pancreas_tumor_pro.d693
+        pancreas_tumor_pro_d705 = pancreas_tumor_pro.d705
+        pancreas_tumor_pro_d751 = pancreas_tumor_pro.d751
+        pancreas_tumor_pro_d756 = pancreas_tumor_pro.d756
 
-    gene1 = ColonData.objects.get(id=id)
+    if ScrapedColonPro.objects.get(id=id):
+        scraped_colon_pro = ScrapedColonPro.objects.get(id=id)
+        scraped_colon_pro_fabp_1 = scraped_colon_pro.fabp_1
+        scraped_colon_pro_fabp_2 = scraped_colon_pro.fabp_2
+        scraped_colon_pro_fabp_4 = scraped_colon_pro.fabp_4
+        scraped_colon_pro_fabp_5 = scraped_colon_pro.fabp_5
+        scraped_colon_pro_g12d_1 = scraped_colon_pro.number_2171_g12d_1
+        scraped_colon_pro_g12d_2 = scraped_colon_pro.number_2172_g12d_2
+        scraped_colon_pro_g12d_3 = scraped_colon_pro.g12d_3
+        scraped_colon_pro_g12d_4 = scraped_colon_pro.g12d_4
 
-    gene1name = gene1.gene_symbol
-    gene1control1 = gene1.control1
-    gene1control2 = gene1.control2
-    gene1control3 = gene1.control3
-    gene1control4 = gene1.control4
-    gene1control5 = gene1.control5
+    if WholePancreasPro.objects.get(id=id):
+        whole_pancreas_pro = WholePancreasPro.objects.get(id=id)
+        whole_pancreas_pro_wt_1 = whole_pancreas_pro.wt_1
+        whole_pancreas_pro_wt_2 = whole_pancreas_pro.wt_2
+        whole_pancreas_pro_wt_3 = whole_pancreas_pro.wt_3
+        whole_pancreas_pro_wt_4 = whole_pancreas_pro.wt_4
+        whole_pancreas_pro_g12d_1 = whole_pancreas_pro.g12d_1
+        whole_pancreas_pro_g12d_2 = whole_pancreas_pro.g12d_2
+        whole_pancreas_pro_g12d_3 = whole_pancreas_pro.g12d_3
 
-    gene1kras1 = gene1.kras1
-    gene1kras2 = gene1.kras2
-    gene1kras3 = gene1.kras3
-    gene1kras4 = gene1.kras4
-    gene1kras5 = gene1.kras5
+    if ColonTumorPro.objects.get(id=id):
+        colon_tumor_pro = ColonTumorPro.objects.get(id=id)
+        colon_tumor_pro_control1 = colon_tumor_pro.control1
+        colon_tumor_pro_control2 = colon_tumor_pro.control2
+        colon_tumor_pro_control3 = colon_tumor_pro.control3
+        colon_tumor_pro_control4 = colon_tumor_pro.control4
+        colon_tumor_pro_control5 = colon_tumor_pro.control5
+        colon_tumor_pro_kras1 = colon_tumor_pro.kras1
+        colon_tumor_pro_kras2 = colon_tumor_pro.kras2
+        colon_tumor_pro_kras3 = colon_tumor_pro.kras3
+        colon_tumor_pro_kras4 = colon_tumor_pro.kras4
+        colon_tumor_pro_kras5 = colon_tumor_pro.kras5
 
     def box():
-        y0 = [gene1control1, gene1control2,
-              gene1control3, gene1control4, gene1control5]
-        y1 = [gene1kras1, gene1kras2, gene1kras3, gene1kras4, gene1kras5]
 
         layout = dict(
-            title=gene1name,
+            title=gene_symbol,
             template="plotly_white",
         )
         fig = go.Figure(layout=layout)
-        fig.add_trace(go.Box(y=y0, name='Control',
-                             marker_color='rgba(0, 102, 255, 1.0)', boxpoints='all'))
-        fig.add_trace(go.Box(y=y1, name='Mutant',
-                             marker_color='rgba(153, 204, 255, 1.0)', boxpoints='all'))
+        if PancreasTumorPro.objects.get(id=id):
+            # pancreas tumor protein
+            ptp_wt = [pancreas_tumor_pro_pdx_1,
+                      pancreas_tumor_pro_pdx_2, pancreas_tumor_pro_pdx_3,
+                      pancreas_tumor_pro_pdxp53_1, pancreas_tumor_pro_pdxp53_2,
+                      pancreas_tumor_pro_pdxp53_3]
+            ptp_g12d = [pancreas_tumor_pro_d314, pancreas_tumor_pro_d693,
+                        pancreas_tumor_pro_d705, pancreas_tumor_pro_d751, pancreas_tumor_pro_d756]
+            fig.add_trace(go.Box(y=ptp_wt, name='Tp53-mutant pancreas WT',
+                                 marker_color='rgba(0, 102, 255, 1.0)', boxpoints='all'))
+            fig.add_trace(go.Box(y=ptp_g12d, name='Tp53-mutant pancreas G12D',
+                                 marker_color='rgba(0, 102, 255, 1.0)', boxpoints='all'))
+        if WholePancreasPro.objects.get(id=id):
+            # whole pancreas protein
+            wpp_wt = [whole_pancreas_pro_wt_1, whole_pancreas_pro_wt_2,
+                      whole_pancreas_pro_wt_3, whole_pancreas_pro_wt_4]
+            wpp_g12d = [whole_pancreas_pro_g12d_1,
+                        whole_pancreas_pro_g12d_2, whole_pancreas_pro_g12d_3]
+            fig.add_trace(go.Box(y=wpp_wt, name='Whole pancreas WT',
+                                 marker_color='rgba(0, 102, 255, 1.0)', boxpoints='all'))
+            fig.add_trace(go.Box(y=wpp_g12d, name='Whole pancreas G12D',
+                                 marker_color='rgba(0, 102, 255, 1.0)', boxpoints='all'))
+        if ScrapedColonPro.objects.get(id=id):
+            # scraped colon protein
+            scp_wt = [scraped_colon_pro_fabp_1, scraped_colon_pro_fabp_2,
+                      scraped_colon_pro_fabp_4, scraped_colon_pro_fabp_5]
+            scp_g12d = [scraped_colon_pro_g12d_1, scraped_colon_pro_g12d_2,
+                        scraped_colon_pro_g12d_3, scraped_colon_pro_g12d_4]
+            fig.add_trace(go.Box(y=scp_wt, name='Colonic epithelium WT',
+                                 marker_color='rgba(0, 102, 255, 1.0)', boxpoints='all'))
+            fig.add_trace(go.Box(y=scp_g12d, name='Colonic epithelium G12D',
+                                 marker_color='rgba(0, 102, 255, 1.0)', boxpoints='all'))
+        if ColonTumorPro.objects.get(id=id):
+            # colon tumor protein
+            ctp_wt = [colon_tumor_pro_control1, colon_tumor_pro_control2,
+                      colon_tumor_pro_control3, colon_tumor_pro_control4, colon_tumor_pro_control5]
+            ctp_g12d = [colon_tumor_pro_kras1, colon_tumor_pro_kras2,
+                        colon_tumor_pro_kras3, colon_tumor_pro_kras4, colon_tumor_pro_kras5]
+            fig.add_trace(go.Box(y=ctp_wt, name='Apc-mutant colon WT',
+                                 marker_color='rgba(0, 102, 255, 1.0)', boxpoints='all'))
+            fig.add_trace(go.Box(y=ctp_g12d, name='Apc-mutant colon G12D',
+                                 marker_color='rgba(0, 102, 255, 1.0)', boxpoints='all'))
+
         plot_div = plot(fig, output_type='div', include_plotlyjs=False)
         return plot_div
 
     context = {
         'plot': box(),
-        # 'colon_data': colon_data,
-        'gene1name': gene1name
+        'gene_symbol': gene_symbol,
+        'all_pro': all_pro,
 
     }
     return render(request, "graphs/graphs.html", context)
