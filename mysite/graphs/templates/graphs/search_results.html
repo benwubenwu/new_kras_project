@@ -5,50 +5,50 @@
 {% load plotly_dash %}
 
 <div class="card mb-3">
-          <div class="card-header">
-            <i class="fas fa-table"></i>
-            Search Results</div>
-          <div class="card-body">
-            <div class="table-responsive">
-              <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                <thead class="text-white bg-info">
-                  <tr>
-                    <th>Entry</th>
-                    <th>Gene Symbol</th>
-                    <th>Protein ID</th>
-                    <th>Description</th>
-                    <th>Organism</th>
-                  </tr>
-                </thead>
-                <tbody>
-                {% for data in all_pro %}
-                  <tr>
-                    <td>
-                      <a href="{% url 'test' id=data.id %}">{{ data.id }}</a>
-                    </td>
-                    <td>{{ data.gene_symbol }}</td>
-                    <td>
-                      {{data.protein_id}}
-                    </td>
-                    <td>{{ data.description }}</td>
-                    {% if "MOUSE" in data.description %}
-                    <td> Mouse </td>
-                    {% elif "HUMAN" in data.description %}
-                    <td> Human </td>
-                    {% elif "PIG" in data.description %}
-                    <td> Pig </td>
-                    {% elif "BOVIN" in data.description %}
-                    <td> Bovine </td>
-                    {% else %}
-                    <td> </td>
-                    {% endif %}
-                  </tr>
-                {% endfor %}
-                </tbody>
-              </table>
-            </div>
-          </div>
-          <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
-        </div>
+  <div class="card-header text-dark">
+    <i class="fas fa-table"></i>
+    Search Results</div>
+  <div class="card-body">
+    <div class="table-responsive">
+      <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+        <thead class="text-white bg-info">
+          <tr>
+            <th>Entry</th>
+            <th>Gene Symbol</th>
+            <th>Protein ID</th>
+            <th>Description</th>
+            <th>Organism</th>
+          </tr>
+        </thead>
+        <tbody class="text-dark">
+        {% for data in all_pro %}
+          <tr>
+            <td>
+              <a href="{% url 'test' id=data.id %}">{{ data.id }}</a>
+            </td>
+            <td>{{ data.gene_symbol }}</td>
+            <td>
+              {{data.protein_id}}
+            </td>
+            <td>{{ data.description }}</td>
+            {% if "MOUSE" in data.description %}
+            <td> Mouse </td>
+            {% elif "HUMAN" in data.description %}
+            <td> Human </td>
+            {% elif "PIG" in data.description %}
+            <td> Pig </td>
+            {% elif "BOVIN" in data.description %}
+            <td> Bovine </td>
+            {% else %}
+            <td> </td>
+            {% endif %}
+          </tr>
+        {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+</div>
 
 {% endblock %}
