@@ -33,59 +33,61 @@
 
       <!-- Main Content -->
       <div id="content">
-
-        <!-- Topbar -->
+          <!-- Topbar -->
         <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+          <div class="container">
+            <a class="navbar-brand mr-1" href="index.html">
+              <img
+                    src="https://storage.needpix.com/rsynced_images/dna-icon-2316641_1280.png"
+                    width="30"
+                    height="30"
+                    class="d-inline-block align-top"
+                    alt=""
+                  />
+            </a>
+            <a class="navbar-brand mr-5" href="{% url 'search' %}">Park Lab</a>
 
-          <a class="navbar-brand mr-1" href="index.html">
-            <img
-                  src="https://storage.needpix.com/rsynced_images/dna-icon-2316641_1280.png"
-                  width="30"
-                  height="30"
-                  class="d-inline-block align-top"
-                  alt=""
-                />
-          </a>
-          <a class="navbar-brand mr-1" href="{% url 'search' %}">Park Lab</a>
-
-          <!-- Topbar Search -->
-          <form class="d-none d-lg-inline-block form-inline mr-auto ml-auto my-2 my-md-0 mw-100 navbar-search" action="{% url 'search_results' %}">
-            <div class="input-group">
-              <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2" name="user_input">
-              <div class="input-group-append">
-                <button class="btn btn-info" type="submit">
-                  <i class="fas fa-search fa-sm"></i>
-                </button>
+            <!-- Topbar Search -->
+            <form class="d-none flex-grow-1 d-lg-inline-block form-inline mx-auto my-2  mw-100 navbar-search" action="{% url 'search_results' %}">
+              <div class="input-group">
+                <input type="text" class="form-control bg-light border-0" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2" name="user_input">
+                <div class="input-group-append">
+                  <button class="btn btn-info" type="submit">
+                    <i class="fas fa-search fa-sm"></i>
+                  </button>
+                </div>
               </div>
-            </div>
-          </form>
-
-          <!-- Topbar Navbar -->
-          <ul class="navbar-nav ml-auto">
-            <!-- Nav Item - Search Dropdown (Visible Only XS) -->
-            <li class="nav-item dropdown no-arrow d-sm-none">
-              <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <i class="fas fa-search fa-fw"></i>
-              </a>
-              <!-- Dropdown - Messages -->
-              <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in" aria-labelledby="searchDropdown">
-                <form class="form-inline mr-auto w-100 navbar-search" action="{% url 'search_results' %}">
-                  <div class="input-group">
-                    <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2" name="user_input">
-                    <div class="input-group-append">
-                      <button class="btn btn-info" type="submit">
-                        <i class="fas fa-search fa-sm"></i>
-                      </button>
+            </form>
+            <img src="https://cdn3.iconfinder.com/data/icons/linecons-free-vector-icons-pack/32/data-512.png" width="1.4%" height="1.4%" class="text-dark d-inline-block align-top mr-1 ml-5 ">
+            <a class="navbar-brand mr-5" href="{% url 'search' %}">Data</a>
+            <a class="navbar-brand mr-5" href="#publication">About</a>
+            <a class="navbar-brand mr-0" href="https://compbio.hms.harvard.edu/contact">Contact</a>
+        
+            <!-- Topbar Navbar -->
+            <ul class="navbar-nav ml-auto">
+              <!-- Nav Item - Search Dropdown (Visible Only XS) -->
+              <li class="nav-item dropdown no-arrow d-sm-none">
+                <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <i class="fas fa-search fa-fw"></i>
+                </a>
+                <!-- Dropdown - Messages -->
+                <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in" aria-labelledby="searchDropdown">
+                  <form class="form-inline mr-auto w-100 navbar-search" action="{% url 'search_results' %}">
+                    <div class="input-group">
+                      <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2" name="user_input">
+                      <div class="input-group-append">
+                        <button class="btn btn-info" type="submit">
+                          <i class="fas fa-search fa-sm"></i>
+                        </button>
+                      </div>
                     </div>
-                  </div>
-                </form>
-              </div>
-            </li>
-
-
-          </ul>
-
+                  </form>
+                </div>
+              </li>
+            </ul>
+          </div>
         </nav>
+
         <!-- End of Topbar -->
 
         <!-- Begin Page Content -->
