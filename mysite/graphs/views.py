@@ -182,11 +182,29 @@ def graphs(request, id):
         plot_div = plot(fig, output_type='div', include_plotlyjs=False)
         return plot_div
 
+    def scatter_colon():
+        layout = dict(
+            title=gene_symbol,
+            template="plotly_white",
+        )
+        fig = go.Figure(layout=layout)
+        try:
+            ctp_ratio = colon_tumor_pro_average_norm_g12d_average_norm_wt
+            scp_ratio = scraped_colon_pro_average_norm_g12d_average_norm_wt
+            points = [ctp_ratio, scp_ratio]
+            fig.add_trace(go.Scatter(
+                x=points, y=1, mode="markers", name="markers"))
+        except:
+            test = 0
+        plot_div = plot(fig, output_type='div', include_plotlyjs=False)
+        return plot_div
+
     context = {
         'box_colon': box_colon(),
         'box_pancreas': box_pancreas(),
         'gene_symbol': gene_symbol,
         'all_pro': all_pro,
+        'scatter_colon': scatter_colon(),
 
     }
     return render(request, "graphs/graphs.html", context)
