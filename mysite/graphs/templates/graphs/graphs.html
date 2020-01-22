@@ -152,9 +152,24 @@
       </div>
     </div>
   </div>
-  <div class="row">
-    <h6>Phosphosites</h6>
-  </div>
+  <!-- <div class="row">
+    <div class="col-lg-4">
+      <div class="dropdown mb-4">
+        <button class="btn btn-info dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Phosphosites
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          {% if not colon_tumor_phos and scraped_colon_phos%}
+          N/A
+          {% else %}
+            {% for i in colon_tumor_phos %}
+            <a class="dropdown-item" href="#">{{i.site_position}}</a>
+            {% endfor %}
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div> -->
   <div class="row">
     <!-- Area Chart -->
     <div class="col-lg-8">
@@ -209,9 +224,6 @@
         </div>
       </div>
     </div>
-  </div>
-  <div class="row">
-    <h6>Phosphosites</h6>
   </div>
 
 {% endblock %} 

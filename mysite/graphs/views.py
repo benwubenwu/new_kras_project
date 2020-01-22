@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from django.views.generic import TemplateView
-from .models import PancreasTumorPro, ScrapedColonPro, WholePancreasPro, ColonTumorPro, AllProPhos
+from .models import PancreasTumorPro, ScrapedColonPro, WholePancreasPro, ColonTumorPro, AllProPhos, ColonTumorsPhos, PancreasTumorsPhos, WholePancreasPhos, ScrapedColonPhos
 from plotly.offline import plot
 import plotly.graph_objects as go
 from django.http import HttpRequest
@@ -108,6 +108,26 @@ def graphs(request, id):
     except ColonTumorPro.DoesNotExist:
         colon_tumor_pro = None
 
+    try:
+        colon_tumor_phos = ColonTumorsPhos.objects.filter(id=id)
+    except ColonTumorsPhos.DoesNotExist:
+        colon_tumor_phos = None
+
+    try:
+        scraped_colon_phos = ScrapedColonPhos.objects.filter(id=id)
+    except ScrapedColonPhos.DoesNotExist:
+        scraped_colon_phos = None
+
+    try:
+        pancreas_tumor_phos = PancreasTumorsPhos.objects.filter(id=id)
+    except PancreasTumorsPhos.DoesNotExist:
+        pancreas_tumor_phos = None
+
+    try:
+        whole_pancreas_phos = WholePancreasPhos.objects.filter(id=id)
+    except WholePancreasPhos.DoesNotExist:
+        whole_pancreas_phos = None
+
     def box_colon():
 
         layout = dict(
@@ -202,13 +222,13 @@ def graphs(request, id):
         try:
             ctp_ratio = colon_tumor_pro_average_norm_g12d_average_norm_wt
             fig.add_trace(go.Scatter(
-                x=[ctp_ratio], y=['Apc-mutant colon'], mode="markers"))
+                x=[ctp_ratio], y=['Apc-mutant colon'], mode="markers", marker_color='rgba(0, 102, 255, 1.0)'))
         except:
             test = 0
         try:
             scp_ratio = scraped_colon_pro_average_norm_g12d_average_norm_wt
             fig.add_trace(go.Scatter(
-                x=[scp_ratio], y=['Colonic epithelium'], mode="markers"))
+                x=[scp_ratio], y=['Colonic epithelium'], mode="markers", marker_color='rgba(0, 102, 255, 1.0)'))
         except:
             test = 0
         plot_div = plot(fig, output_type='div', include_plotlyjs=False)
@@ -232,13 +252,13 @@ def graphs(request, id):
         try:
             ptp_ratio = pancreas_tumor_pro_average_norm_g12d_average_norm_wt
             fig.add_trace(go.Scatter(
-                x=[ptp_ratio], y=['Tp53-mutant pancreas'], mode="markers"))
+                x=[ptp_ratio], y=['Tp53-mutant pancreas'], mode="markers", marker_color='rgba(0, 102, 255, 1.0)'))
         except:
             test = 0
         try:
             wpp_ratio = whole_pancreas_pro_average_norm_g12d_average_norm_wt
             fig.add_trace(go.Scatter(
-                x=[wpp_ratio], y=['Whole pancreas'], mode="markers"))
+                x=[wpp_ratio], y=['Whole pancreas'], mode="markers", marker_color='rgba(0, 102, 255, 1.0)'))
         except:
             test = 0
         plot_div = plot(fig, output_type='div', include_plotlyjs=False)
@@ -250,7 +270,11 @@ def graphs(request, id):
         'gene_symbol': gene_symbol,
         'all_pro': all_pro,
         'scatter_colon': scatter_colon(),
-        'scatter_pancreas': scatter_pancreas()
+        'scatter_pancreas': scatter_pancreas(),
+        'colon_tumor_phos': colon_tumor_phos,
+        'scraped_colon_phos': scraped_colon_phos,
+        'whole_pancreas_phos': whole_pancreas_phos,
+        'pancreas_tumor_phos': pancreas_tumor_phos
 
     }
     return render(request, "graphs/graphs.html", context)
