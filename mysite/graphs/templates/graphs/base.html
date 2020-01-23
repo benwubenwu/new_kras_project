@@ -44,7 +44,7 @@
           <!-- Topbar -->
         <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
           <div class="container">
-            <a class="navbar-brand mr-1" href="index.html">
+            <a class="navbar-brand mr-1" href="{% url 'search' %}">
               <img
                     src="https://storage.needpix.com/rsynced_images/dna-icon-2316641_1280.png"
                     width="30"
@@ -56,7 +56,7 @@
             <a class="navbar-brand mr-5" href="{% url 'search' %}">Park Lab</a>
 
             <!-- Topbar Search -->
-            <form class="d-none flex-grow-1 d-lg-inline-block form-inline mx-auto my-2  mw-100 navbar-search" action="{% url 'search_results' %}">
+            <form class="d-none flex-grow-1 d-lg-inline-block form-inline mx-auto my-2 mw-100 navbar-search" action="{% url 'search_results' %}">
               <div class="input-group">
                 <input type="text" class="form-control bg-light border-0" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2" name="user_input">
                 <div class="input-group-append">

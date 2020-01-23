@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/1.11/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.11/ref/settings/
 """
-
+import django_heroku
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -155,3 +155,4 @@ STATICFILES_DIRS = [
         BASE_DIR, 'mysite/static')
     # '/Users/benjaminwu/Desktop/kras_project/mysite/mysite/static'
 ]
+django_heroku.settings(locals())

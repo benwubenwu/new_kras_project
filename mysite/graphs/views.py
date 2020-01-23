@@ -143,9 +143,9 @@ def graphs(request, id):
             scp_g12d = [scraped_colon_pro_g12d_1, scraped_colon_pro_g12d_2,
                         scraped_colon_pro_g12d_3, scraped_colon_pro_g12d_4]
             fig.add_trace(go.Box(x=['CE WT', 'CE WT', 'CE WT', 'CE WT'], y=scp_wt, name='Colonic epithelium WT (CE WT)',
-                                 marker_color='rgba(0, 102, 255, 1.0)', boxpoints='all'))
+                                 marker_color='blue', boxpoints='all'))
             fig.add_trace(go.Box(x=['CE G12D', 'CE G12D', 'CE G12D', 'CE G12D'], y=scp_g12d, name='Colonic epithelium G12D (CE G12D)',
-                                 marker_color='rgba(0, 102, 255, 1.0)', boxpoints='all'))
+                                 marker_color='blue', boxpoints='all'))
         except:
             fig.add_trace(go.Box(y=[], name='Colonic epithelium WT'))
             fig.add_trace(go.Box(y=[], name='Colonic epithelium G12D'))
@@ -156,9 +156,9 @@ def graphs(request, id):
             ctp_g12d = [colon_tumor_pro_kras1, colon_tumor_pro_kras2,
                         colon_tumor_pro_kras3, colon_tumor_pro_kras4, colon_tumor_pro_kras5]
             fig.add_trace(go.Box(x=['CT WT', 'CT WT', 'CT WT', 'CT WT', 'CT WT'], y=ctp_wt, name='Apc-mutant colon WT (CT WT)',
-                                 marker_color='rgba(0, 102, 255, 1.0)', boxpoints='all'))
+                                 marker_color='red', boxpoints='all'))
             fig.add_trace(go.Box(x=['CT G12D', 'CT G12D', 'CT G12D', 'CT G12D', 'CT G12D'], y=ctp_g12d, name='Apc-mutant colon G12D (CT G12D)',
-                                 marker_color='rgba(0, 102, 255, 1.0)', boxpoints='all'))
+                                 marker_color='red', boxpoints='all'))
         except:
             fig.add_trace(go.Box(y=[], name='Apc-mutant colon WT'))
             fig.add_trace(go.Box(y=[], name='Apc-mutant colon G12D'))
@@ -173,6 +173,19 @@ def graphs(request, id):
         )
         fig = go.Figure(layout=layout)
         fig.update_xaxes(tickangle=45)
+        # whole pancreas protein
+        try:
+            wpp_wt = [whole_pancreas_pro_wt_1, whole_pancreas_pro_wt_2,
+                      whole_pancreas_pro_wt_3, whole_pancreas_pro_wt_4]
+            wpp_g12d = [whole_pancreas_pro_g12d_1,
+                        whole_pancreas_pro_g12d_2, whole_pancreas_pro_g12d_3]
+            fig.add_trace(go.Box(x=['WP WT', 'WP WT', 'WP WT', 'WP WT'], y=wpp_wt, name='Whole pancreas WT (WP WT)',
+                                 marker_color='#5cb85c', boxpoints='all'))
+            fig.add_trace(go.Box(x=['WP G12D', 'WP G12D', 'WP G12D'], y=wpp_g12d, name='Whole pancreas G12D (WP G12D)',
+                                 marker_color='#5cb85c', boxpoints='all'))
+        except:
+            fig.add_trace(go.Box(y=[], name='Whole pancreas WT'))
+            fig.add_trace(go.Box(y=[], name='Whole pancreas G12D'))
         # pancreas tumor protein
         try:
             ptp_wt = [pancreas_tumor_pro_pdx_1,
@@ -182,25 +195,12 @@ def graphs(request, id):
             ptp_g12d = [pancreas_tumor_pro_d314, pancreas_tumor_pro_d693,
                         pancreas_tumor_pro_d705, pancreas_tumor_pro_d751, pancreas_tumor_pro_d756]
             fig.add_trace(go.Box(x=['PT WT', 'PT WT', 'PT WT', 'PT WT', 'PT WT', 'PT WT'], y=ptp_wt, name='Tp53-mutant pancreas WT (PT WT)',
-                                 marker_color='rgba(0, 102, 255, 1.0)', boxpoints='all'))
+                                 marker_color='black', boxpoints='all'))
             fig.add_trace(go.Box(x=['PT G12D', 'PT G12D', 'PT G12D', 'PT G12D', 'PT G12D'], y=ptp_g12d, name='Tp53-mutant pancreas G12D (PT G12D)',
-                                 marker_color='rgba(0, 102, 255, 1.0)', boxpoints='all'))
+                                 marker_color='black', boxpoints='all'))
         except:
             fig.add_trace(go.Box(y=[], name='Tp53-mutant pancreas WT'))
             fig.add_trace(go.Box(y=[], name='Tp53-mutant pancreas G12D'))
-        # whole pancreas protein
-        try:
-            wpp_wt = [whole_pancreas_pro_wt_1, whole_pancreas_pro_wt_2,
-                      whole_pancreas_pro_wt_3, whole_pancreas_pro_wt_4]
-            wpp_g12d = [whole_pancreas_pro_g12d_1,
-                        whole_pancreas_pro_g12d_2, whole_pancreas_pro_g12d_3]
-            fig.add_trace(go.Box(x=['WP WT', 'WP WT', 'WP WT', 'WP WT'], y=wpp_wt, name='Whole pancreas WT (WP WT)',
-                                 marker_color='rgba(0, 102, 255, 1.0)', boxpoints='all'))
-            fig.add_trace(go.Box(x=['WP G12D', 'WP G12D', 'WP G12D'], y=wpp_g12d, name='Whole pancreas G12D (WP G12D)',
-                                 marker_color='rgba(0, 102, 255, 1.0)', boxpoints='all'))
-        except:
-            fig.add_trace(go.Box(y=[], name='Whole pancreas WT'))
-            fig.add_trace(go.Box(y=[], name='Whole pancreas G12D'))
         plot_div = plot(fig, output_type='div', include_plotlyjs=False)
         return plot_div
 
@@ -217,18 +217,18 @@ def graphs(request, id):
         )
         fig = go.Figure(layout=layout)
         fig.add_shape(go.layout.Shape(type="line", x0=1, x1=1,
-                                      y0=0, y1=1, line=dict(color="#d62728", width=1.5, dash='dot')))
+                                      y0=0, y1=1, line=dict(color="#5bc0de", width=1.5, dash='dot')))
         fig.update_shapes(dict(xref='x'))
         try:
             ctp_ratio = colon_tumor_pro_average_norm_g12d_average_norm_wt
             fig.add_trace(go.Scatter(
-                x=[ctp_ratio], y=['Apc-mutant colon'], mode="markers", marker_color='rgba(0, 102, 255, 1.0)'))
+                x=[ctp_ratio], y=['Apc-mutant colon'], mode="markers", marker_color='red'))
         except:
             test = 0
         try:
             scp_ratio = scraped_colon_pro_average_norm_g12d_average_norm_wt
             fig.add_trace(go.Scatter(
-                x=[scp_ratio], y=['Colonic epithelium'], mode="markers", marker_color='rgba(0, 102, 255, 1.0)'))
+                x=[scp_ratio], y=['Colonic epithelium'], mode="markers", marker_color='blue'))
         except:
             test = 0
         plot_div = plot(fig, output_type='div', include_plotlyjs=False)
@@ -247,18 +247,18 @@ def graphs(request, id):
         )
         fig = go.Figure(layout=layout)
         fig.add_shape(go.layout.Shape(type="line", x0=1, x1=1,
-                                      y0=0, y1=1, line=dict(color="#d62728", width=1.5, dash='dot')))
+                                      y0=0, y1=1, line=dict(color="#5bc0de", width=1.5, dash='dot')))
         fig.update_shapes(dict(xref='x'))
         try:
             ptp_ratio = pancreas_tumor_pro_average_norm_g12d_average_norm_wt
             fig.add_trace(go.Scatter(
-                x=[ptp_ratio], y=['Tp53-mutant pancreas'], mode="markers", marker_color='rgba(0, 102, 255, 1.0)'))
+                x=[ptp_ratio], y=['Tp53-mutant pancreas'], mode="markers", marker_color='black'))
         except:
             test = 0
         try:
             wpp_ratio = whole_pancreas_pro_average_norm_g12d_average_norm_wt
             fig.add_trace(go.Scatter(
-                x=[wpp_ratio], y=['Whole pancreas'], mode="markers", marker_color='rgba(0, 102, 255, 1.0)'))
+                x=[wpp_ratio], y=['Whole pancreas'], mode="markers", marker_color='#5cb85c'))
         except:
             test = 0
         plot_div = plot(fig, output_type='div', include_plotlyjs=False)
