@@ -9,6 +9,14 @@ from django.db.models import Q
 # Create your views here.
 
 
+def about(request):
+    return render(request, 'graphs/about.html')
+
+
+def contact(request):
+    return render(request, 'graphs/contact.html')
+
+
 def search(request):
     return render(request, "graphs/search.html")
 

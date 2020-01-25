@@ -10,9 +10,9 @@ from django.db import models
 
 class AllProPhos(models.Model):
     protein_id = models.TextField(db_column='Protein Id', blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters.
-    id = models.TextField(db_column='Id', blank=True, null=False, primary_key=True)  # Field name made lowercase.
+    id = models.TextField(db_column='id', blank=True, null=False, primary_key=True)  # Field name made lowercase.
     gene_symbol = models.TextField(db_column='Gene Symbol', blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters.
-    description = models.TextField(db_column='Description', blank=True, null=True)  # Field name made lowercase.
+    description = models.TextField(db_column='description', blank=True, null=True)  # Field name made lowercase.
 
     class Meta:
         managed = False
@@ -88,19 +88,19 @@ class AuthUserUserPermissions(models.Model):
 class ColonTumorPro(models.Model):
     protein_id = models.TextField(db_column='Protein Id', blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters.
     gene_symbol = models.TextField(db_column='Gene Symbol', blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters.
-    description = models.TextField(db_column='Description', blank=True, null=True)  # Field name made lowercase.
+    description = models.TextField(db_column='description', blank=True, null=True)  # Field name made lowercase.
     number_of_peptides = models.TextField(db_column='Number of peptides', blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters.
     control1 = models.TextField(blank=True, null=True)
     control2 = models.TextField(blank=True, null=True)
     control3 = models.TextField(blank=True, null=True)
     control4 = models.TextField(blank=True, null=True)
     control5 = models.TextField(blank=True, null=True)
-    kras1 = models.TextField(db_column='KRAS1', blank=True, null=True)  # Field name made lowercase.
-    kras2 = models.TextField(db_column='KRAS2', blank=True, null=True)  # Field name made lowercase.
-    kras3 = models.TextField(db_column='KRAS3', blank=True, null=True)  # Field name made lowercase.
-    kras4 = models.TextField(db_column='KRAS4', blank=True, null=True)  # Field name made lowercase.
-    kras5 = models.TextField(db_column='KRAS5', blank=True, null=True)  # Field name made lowercase.
-    id = models.TextField(db_column='Id', blank=True, null=False, primary_key=True)  # Field name made lowercase.
+    kras1 = models.TextField(db_column='kras1', blank=True, null=True)  # Field name made lowercase.
+    kras2 = models.TextField(db_column='kras2', blank=True, null=True)  # Field name made lowercase.
+    kras3 = models.TextField(db_column='kras3', blank=True, null=True)  # Field name made lowercase.
+    kras4 = models.TextField(db_column='kras4', blank=True, null=True)  # Field name made lowercase.
+    kras5 = models.TextField(db_column='kras5', blank=True, null=True)  # Field name made lowercase.
+    id = models.TextField(db_column='id', blank=True, null=False, primary_key=True)  # Field name made lowercase.
     average_norm_wt = models.TextField(db_column='Average norm WT', blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters.
     average_norm_g12d = models.TextField(db_column='Average norm G12D', blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters.
     average_norm_g12d_average_norm_wt = models.TextField(db_column='Average norm G12D/Average norm WT', blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters.
@@ -111,12 +111,12 @@ class ColonTumorPro(models.Model):
 
 
 class ColonTumorsPhos(models.Model):
-    sitetype = models.TextField(db_column='SiteType', blank=True, null=True)  # Field name made lowercase.
+    sitetype = models.TextField(db_column='sitetype', blank=True, null=True)  # Field name made lowercase.
     protein_id = models.TextField(db_column='Protein Id', blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters.
     gene_symbol = models.TextField(blank=True, null=True)
     prot_description = models.TextField(blank=True, null=True)
     site_position = models.TextField(db_column='Site Position', blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters.
-    motif = models.TextField(db_column='Motif', blank=True, null=True)  # Field name made lowercase.
+    motif = models.TextField(db_column='motif', blank=True, null=True)  # Field name made lowercase.
     max_score = models.TextField(db_column='Max Score', blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters.
     redundancy = models.TextField(blank=True, null=True)
     sequence = models.TextField(blank=True, null=True)
@@ -126,11 +126,11 @@ class ColonTumorsPhos(models.Model):
     control3 = models.TextField(blank=True, null=True)
     control4 = models.TextField(blank=True, null=True)
     control5 = models.TextField(blank=True, null=True)
-    kras1 = models.TextField(db_column='KRAS1', blank=True, null=True)  # Field name made lowercase.
-    kras2 = models.TextField(db_column='KRAS2', blank=True, null=True)  # Field name made lowercase.
-    kras3 = models.TextField(db_column='KRAS3', blank=True, null=True)  # Field name made lowercase.
-    kras4 = models.TextField(db_column='KRAS4', blank=True, null=True)  # Field name made lowercase.
-    kras5 = models.TextField(db_column='KRAS5', blank=True, null=True)  # Field name made lowercase.
+    kras1 = models.TextField(db_column='kras1', blank=True, null=True)  # Field name made lowercase.
+    kras2 = models.TextField(db_column='kras2', blank=True, null=True)  # Field name made lowercase.
+    kras3 = models.TextField(db_column='kras3', blank=True, null=True)  # Field name made lowercase.
+    kras4 = models.TextField(db_column='kras4', blank=True, null=True)  # Field name made lowercase.
+    kras5 = models.TextField(db_column='kras5', blank=True, null=True)  # Field name made lowercase.
     average_wt = models.TextField(db_column='Average WT', blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters.
     average_g12d = models.TextField(db_column='Average G12D', blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters.
     average_g12d_average_wt = models.TextField(db_column='Average G12D/Average WT', blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters.
@@ -139,15 +139,15 @@ class ColonTumorsPhos(models.Model):
     norm_control3 = models.TextField(blank=True, null=True)
     norm_control4 = models.TextField(blank=True, null=True)
     norm_control5 = models.TextField(blank=True, null=True)
-    norm_kras1 = models.TextField(db_column='norm_KRAS1', blank=True, null=True)  # Field name made lowercase.
-    norm_kras2 = models.TextField(db_column='norm_KRAS2', blank=True, null=True)  # Field name made lowercase.
-    norm_kras3 = models.TextField(db_column='norm_KRAS3', blank=True, null=True)  # Field name made lowercase.
-    norm_kras4 = models.TextField(db_column='norm_KRAS4', blank=True, null=True)  # Field name made lowercase.
-    norm_kras5 = models.TextField(db_column='norm_KRAS5', blank=True, null=True)  # Field name made lowercase.
+    norm_kras1 = models.TextField(db_column='norm_kras1', blank=True, null=True)  # Field name made lowercase.
+    norm_kras2 = models.TextField(db_column='norm_kras2', blank=True, null=True)  # Field name made lowercase.
+    norm_kras3 = models.TextField(db_column='norm_kras3', blank=True, null=True)  # Field name made lowercase.
+    norm_kras4 = models.TextField(db_column='norm_kras4', blank=True, null=True)  # Field name made lowercase.
+    norm_kras5 = models.TextField(db_column='norm_kras5', blank=True, null=True)  # Field name made lowercase.
     average_norm_wt = models.TextField(db_column='Average norm WT', blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters.
     average_norm_g12d = models.TextField(db_column='Average norm G12D', blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters.
     average_norm_g12d_average_norm_wt = models.TextField(db_column='Average norm G12D/Average norm WT', blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters.
-    id = models.TextField(db_column='Id', blank=True, null=False, primary_key=True)  # Field name made lowercase.
+    id = models.TextField(db_column='id', blank=True, null=False, primary_key=True)  # Field name made lowercase.
 
     class Meta:
         managed = False
@@ -224,20 +224,20 @@ class DjangoSession(models.Model):
 class PancreasTumorPro(models.Model):
     protein_id = models.TextField(db_column='Protein Id', blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters.
     gene_symbol = models.TextField(db_column='Gene Symbol', blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters.
-    description = models.TextField(db_column='Description', blank=True, null=True)  # Field name made lowercase.
+    description = models.TextField(db_column='description', blank=True, null=True)  # Field name made lowercase.
     number_of_peptides = models.TextField(db_column='Number of peptides', blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters.
-    pdx_1 = models.TextField(db_column='PDX_1', blank=True, null=True)  # Field name made lowercase.
-    pdx_2 = models.TextField(db_column='PDX_2', blank=True, null=True)  # Field name made lowercase.
-    pdx_3 = models.TextField(db_column='PDX_3', blank=True, null=True)  # Field name made lowercase.
-    pdxp53_1 = models.TextField(db_column='PDXp53_1', blank=True, null=True)  # Field name made lowercase.
-    pdxp53_2 = models.TextField(db_column='PDXp53_2', blank=True, null=True)  # Field name made lowercase.
-    pdxp53_3 = models.TextField(db_column='PDXp53_3', blank=True, null=True)  # Field name made lowercase.
-    d314 = models.TextField(db_column='D314', blank=True, null=True)  # Field name made lowercase.
-    d693 = models.TextField(db_column='D693', blank=True, null=True)  # Field name made lowercase.
-    d705 = models.TextField(db_column='D705', blank=True, null=True)  # Field name made lowercase.
-    d751 = models.TextField(db_column='D751', blank=True, null=True)  # Field name made lowercase.
-    d756 = models.TextField(db_column='D756', blank=True, null=True)  # Field name made lowercase.
-    id = models.TextField(db_column='Id', blank=True, null=False, primary_key=True)  # Field name made lowercase.
+    pdx_1 = models.TextField(db_column='pdx_1', blank=True, null=True)  # Field name made lowercase.
+    pdx_2 = models.TextField(db_column='pdx_2', blank=True, null=True)  # Field name made lowercase.
+    pdx_3 = models.TextField(db_column='pdx_3', blank=True, null=True)  # Field name made lowercase.
+    pdxp53_1 = models.TextField(db_column='pdxp53_1', blank=True, null=True)  # Field name made lowercase.
+    pdxp53_2 = models.TextField(db_column='pdxp53_2', blank=True, null=True)  # Field name made lowercase.
+    pdxp53_3 = models.TextField(db_column='pdxp53_3', blank=True, null=True)  # Field name made lowercase.
+    d314 = models.TextField(db_column='d314', blank=True, null=True)  # Field name made lowercase.
+    d693 = models.TextField(db_column='d693', blank=True, null=True)  # Field name made lowercase.
+    d705 = models.TextField(db_column='d705', blank=True, null=True)  # Field name made lowercase.
+    d751 = models.TextField(db_column='d751', blank=True, null=True)  # Field name made lowercase.
+    d756 = models.TextField(db_column='d756', blank=True, null=True)  # Field name made lowercase.
+    id = models.TextField(db_column='id', blank=True, null=False, primary_key=True)  # Field name made lowercase.
     average_norm_wt = models.TextField(db_column='Average norm WT', blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters.
     average_norm_g12d = models.TextField(db_column='Average norm G12D', blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters.
     average_norm_g12d_average_norm_wt = models.TextField(db_column='Average norm G12D/Average norm WT', blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters.
@@ -249,41 +249,41 @@ class PancreasTumorPro(models.Model):
 
 class PancreasTumorsPhos(models.Model):
     type = models.TextField(blank=True, null=True)
-    proteinid = models.TextField(db_column='proteinID', blank=True, null=True)  # Field name made lowercase.
-    genesymbol = models.TextField(db_column='geneSymbol', blank=True, null=True)  # Field name made lowercase.
-    protdesc = models.TextField(db_column='protDesc', blank=True, null=True)  # Field name made lowercase.
-    siteposstr = models.TextField(db_column='sitePosStr', blank=True, null=True)  # Field name made lowercase.
-    motifpeptidestr = models.TextField(db_column='motifPeptideStr', blank=True, null=True)  # Field name made lowercase.
-    maxscorestr = models.TextField(db_column='maxScoreStr', blank=True, null=True)  # Field name made lowercase.
-    redundancystr = models.TextField(db_column='redundancyStr', blank=True, null=True)  # Field name made lowercase.
+    proteinid = models.TextField(db_column='proteinid', blank=True, null=True)  # Field name made lowercase.
+    genesymbol = models.TextField(db_column='genesymbol', blank=True, null=True)  # Field name made lowercase.
+    protdesc = models.TextField(db_column='protdesc', blank=True, null=True)  # Field name made lowercase.
+    siteposstr = models.TextField(db_column='siteposstr', blank=True, null=True)  # Field name made lowercase.
+    motifpeptidestr = models.TextField(db_column='motifpeptidestr', blank=True, null=True)  # Field name made lowercase.
+    maxscorestr = models.TextField(db_column='maxscorestr', blank=True, null=True)  # Field name made lowercase.
+    redundancystr = models.TextField(db_column='redundancystr', blank=True, null=True)  # Field name made lowercase.
     sequence = models.TextField(blank=True, null=True)
     default_num_quant = models.TextField(blank=True, null=True)
-    pdx_1 = models.TextField(db_column='PDX_1', blank=True, null=True)  # Field name made lowercase.
-    pdx_2 = models.TextField(db_column='PDX_2', blank=True, null=True)  # Field name made lowercase.
-    pdx_3 = models.TextField(db_column='PDX_3', blank=True, null=True)  # Field name made lowercase.
-    pdxp53_1 = models.TextField(db_column='PDXp53_1', blank=True, null=True)  # Field name made lowercase.
-    pdxp53_2 = models.TextField(db_column='PDXp53_2', blank=True, null=True)  # Field name made lowercase.
-    pdxp53_3 = models.TextField(db_column='PDXp53_3', blank=True, null=True)  # Field name made lowercase.
-    d314 = models.TextField(db_column='D314', blank=True, null=True)  # Field name made lowercase.
-    d693 = models.TextField(db_column='D693', blank=True, null=True)  # Field name made lowercase.
-    d705 = models.TextField(db_column='D705', blank=True, null=True)  # Field name made lowercase.
-    d751 = models.TextField(db_column='D751', blank=True, null=True)  # Field name made lowercase.
-    d756 = models.TextField(db_column='D756', blank=True, null=True)  # Field name made lowercase.
-    norm_pdx_1 = models.TextField(db_column='norm_PDX_1', blank=True, null=True)  # Field name made lowercase.
-    norm_pdx_2 = models.TextField(db_column='norm_PDX_2', blank=True, null=True)  # Field name made lowercase.
-    norm_pdx_3 = models.TextField(db_column='norm_PDX_3', blank=True, null=True)  # Field name made lowercase.
-    norm_pdxp53_1 = models.TextField(db_column='norm_PDXp53_1', blank=True, null=True)  # Field name made lowercase.
-    norm_pdxp53_2 = models.TextField(db_column='norm_PDXp53_2', blank=True, null=True)  # Field name made lowercase.
-    norm_pdxp53_3 = models.TextField(db_column='norm_PDXp53_3', blank=True, null=True)  # Field name made lowercase.
-    norm_d314 = models.TextField(db_column='norm_D314', blank=True, null=True)  # Field name made lowercase.
-    norm_d693 = models.TextField(db_column='norm_D693', blank=True, null=True)  # Field name made lowercase.
-    norm_d705 = models.TextField(db_column='norm_D705', blank=True, null=True)  # Field name made lowercase.
-    norm_d751 = models.TextField(db_column='norm_D751', blank=True, null=True)  # Field name made lowercase.
-    norm_d756 = models.TextField(db_column='norm_D756', blank=True, null=True)  # Field name made lowercase.
+    pdx_1 = models.TextField(db_column='pdx_1', blank=True, null=True)  # Field name made lowercase.
+    pdx_2 = models.TextField(db_column='pdx_2', blank=True, null=True)  # Field name made lowercase.
+    pdx_3 = models.TextField(db_column='pdx_3', blank=True, null=True)  # Field name made lowercase.
+    pdxp53_1 = models.TextField(db_column='pdxp53_1', blank=True, null=True)  # Field name made lowercase.
+    pdxp53_2 = models.TextField(db_column='pdxp53_2', blank=True, null=True)  # Field name made lowercase.
+    pdxp53_3 = models.TextField(db_column='pdxp53_3', blank=True, null=True)  # Field name made lowercase.
+    d314 = models.TextField(db_column='d314', blank=True, null=True)  # Field name made lowercase.
+    d693 = models.TextField(db_column='d693', blank=True, null=True)  # Field name made lowercase.
+    d705 = models.TextField(db_column='d705', blank=True, null=True)  # Field name made lowercase.
+    d751 = models.TextField(db_column='d751', blank=True, null=True)  # Field name made lowercase.
+    d756 = models.TextField(db_column='d756', blank=True, null=True)  # Field name made lowercase.
+    norm_pdx_1 = models.TextField(db_column='norm_pdx_1', blank=True, null=True)  # Field name made lowercase.
+    norm_pdx_2 = models.TextField(db_column='norm_pdx_2', blank=True, null=True)  # Field name made lowercase.
+    norm_pdx_3 = models.TextField(db_column='norm_pdx_3', blank=True, null=True)  # Field name made lowercase.
+    norm_pdxp53_1 = models.TextField(db_column='norm_pdxp53_1', blank=True, null=True)  # Field name made lowercase.
+    norm_pdxp53_2 = models.TextField(db_column='norm_pdxp53_2', blank=True, null=True)  # Field name made lowercase.
+    norm_pdxp53_3 = models.TextField(db_column='norm_pdxp53_3', blank=True, null=True)  # Field name made lowercase.
+    norm_d314 = models.TextField(db_column='norm_d314', blank=True, null=True)  # Field name made lowercase.
+    norm_d693 = models.TextField(db_column='norm_d693', blank=True, null=True)  # Field name made lowercase.
+    norm_d705 = models.TextField(db_column='norm_d705', blank=True, null=True)  # Field name made lowercase.
+    norm_d751 = models.TextField(db_column='norm_d751', blank=True, null=True)  # Field name made lowercase.
+    norm_d756 = models.TextField(db_column='norm_d756', blank=True, null=True)  # Field name made lowercase.
     average_norm_wt = models.TextField(db_column='Average norm WT', blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters.
     average_norm_g12d = models.TextField(db_column='Average norm G12D', blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters.
     average_norm_g12d_average_norm_wt = models.TextField(db_column='Average norm G12D/Average norm WT', blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters.
-    id = models.TextField(db_column='Id', blank=True, null=False, primary_key=True)  # Field name made lowercase.
+    id = models.TextField(db_column='id', blank=True, null=False, primary_key=True)  # Field name made lowercase.
 
     class Meta:
         managed = False
@@ -291,36 +291,36 @@ class PancreasTumorsPhos(models.Model):
 
 
 class ScrapedColonPhos(models.Model):
-    type = models.TextField(db_column='Type', blank=True, null=True)  # Field name made lowercase.
+    type = models.TextField(db_column='type', blank=True, null=True)  # Field name made lowercase.
     protein_id = models.TextField(db_column='Protein Id', blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters.
     gene_symbol = models.TextField(blank=True, null=True)
     prot_description = models.TextField(blank=True, null=True)
     site_position = models.TextField(db_column='Site Position', blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters.
-    motif = models.TextField(db_column='Motif', blank=True, null=True)  # Field name made lowercase.
+    motif = models.TextField(db_column='motif', blank=True, null=True)  # Field name made lowercase.
     max_score = models.TextField(db_column='Max Score', blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters.
     redundancy = models.TextField(blank=True, null=True)
     sequence = models.TextField(blank=True, null=True)
     default_num_quant = models.TextField(blank=True, null=True)
-    fabp_1 = models.TextField(db_column='FABP_1', blank=True, null=True)  # Field name made lowercase.
-    fabp_2 = models.TextField(db_column='FABP_2', blank=True, null=True)  # Field name made lowercase.
-    fabp_4 = models.TextField(db_column='FABP_4', blank=True, null=True)  # Field name made lowercase.
-    fabp_5 = models.TextField(db_column='FABP_5', blank=True, null=True)  # Field name made lowercase.
+    fabp_1 = models.TextField(db_column='fabp_1', blank=True, null=True)  # Field name made lowercase.
+    fabp_2 = models.TextField(db_column='fabp_2', blank=True, null=True)  # Field name made lowercase.
+    fabp_4 = models.TextField(db_column='fabp_4', blank=True, null=True)  # Field name made lowercase.
+    fabp_5 = models.TextField(db_column='fabp_5', blank=True, null=True)  # Field name made lowercase.
     number_2171_g12d_1 = models.TextField(db_column='2171_G12D_1', blank=True, null=True)  # Field name made lowercase. Field renamed because it wasn't a valid Python identifier.
     number_2172_g12d_2 = models.TextField(db_column='2172_G12D_2', blank=True, null=True)  # Field name made lowercase. Field renamed because it wasn't a valid Python identifier.
-    g12d_3 = models.TextField(db_column='G12D_3', blank=True, null=True)  # Field name made lowercase.
-    g12d_4 = models.TextField(db_column='G12D_4', blank=True, null=True)  # Field name made lowercase.
-    norm_fabp_1 = models.TextField(db_column='norm_FABP_1', blank=True, null=True)  # Field name made lowercase.
-    norm_fabp_2 = models.TextField(db_column='norm_FABP_2', blank=True, null=True)  # Field name made lowercase.
-    norm_fabp_4 = models.TextField(db_column='norm_FABP_4', blank=True, null=True)  # Field name made lowercase.
-    norm_fabp_5 = models.TextField(db_column='norm_FABP_5', blank=True, null=True)  # Field name made lowercase.
-    norm_2171_g12d_1 = models.TextField(db_column='norm_2171_G12D_1', blank=True, null=True)  # Field name made lowercase.
-    norm_2172_g12d_2 = models.TextField(db_column='norm_2172_G12D_2', blank=True, null=True)  # Field name made lowercase.
-    norm_g12d_3 = models.TextField(db_column='norm_G12D_3', blank=True, null=True)  # Field name made lowercase.
-    norm_g12d_4 = models.TextField(db_column='norm_G12D_4', blank=True, null=True)  # Field name made lowercase.
+    g12d_3 = models.TextField(db_column='g12d_3', blank=True, null=True)  # Field name made lowercase.
+    g12d_4 = models.TextField(db_column='g12d_4', blank=True, null=True)  # Field name made lowercase.
+    norm_fabp_1 = models.TextField(db_column='norm_fabp_1', blank=True, null=True)  # Field name made lowercase.
+    norm_fabp_2 = models.TextField(db_column='norm_fabp_2', blank=True, null=True)  # Field name made lowercase.
+    norm_fabp_4 = models.TextField(db_column='norm_fabp_4', blank=True, null=True)  # Field name made lowercase.
+    norm_fabp_5 = models.TextField(db_column='norm_fabp_5', blank=True, null=True)  # Field name made lowercase.
+    norm_2171_g12d_1 = models.TextField(db_column='norm_2171_g12d_1', blank=True, null=True)  # Field name made lowercase.
+    norm_2172_g12d_2 = models.TextField(db_column='norm_2172_g12d_2', blank=True, null=True)  # Field name made lowercase.
+    norm_g12d_3 = models.TextField(db_column='norm_g12d_3', blank=True, null=True)  # Field name made lowercase.
+    norm_g12d_4 = models.TextField(db_column='norm_g12d_4', blank=True, null=True)  # Field name made lowercase.
     average_norm_wt = models.TextField(db_column='Average norm WT', blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters.
     average_norm_g12d = models.TextField(db_column='Average norm G12D', blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters.
     average_norm_g12d_average_norm_wt = models.TextField(db_column='Average norm G12D/Average norm WT', blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters.
-    id = models.TextField(db_column='Id', blank=True, null=False, primary_key=True)  # Field name made lowercase.
+    id = models.TextField(db_column='id', blank=True, null=False, primary_key=True)  # Field name made lowercase.
 
     class Meta:
         managed = False
@@ -330,30 +330,30 @@ class ScrapedColonPhos(models.Model):
 class ScrapedColonPro(models.Model):
     protein_id = models.TextField(db_column='Protein Id', blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters.
     gene_symbol = models.TextField(db_column='Gene Symbol', blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters.
-    description = models.TextField(db_column='Description', blank=True, null=True)  # Field name made lowercase.
+    description = models.TextField(db_column='description', blank=True, null=True)  # Field name made lowercase.
     group_id = models.TextField(db_column='Group ID', blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters.
     number_of_peptides = models.TextField(db_column='Number of peptides', blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters.
     collapsed_field = models.TextField(db_column='Collapsed?', blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters. Field renamed because it ended with '_'.
-    fabp_1 = models.TextField(db_column='FABP_1', blank=True, null=True)  # Field name made lowercase.
-    fabp_2 = models.TextField(db_column='FABP_2', blank=True, null=True)  # Field name made lowercase.
-    fabp_4 = models.TextField(db_column='FABP_4', blank=True, null=True)  # Field name made lowercase.
-    fabp_5 = models.TextField(db_column='FABP_5', blank=True, null=True)  # Field name made lowercase.
+    fabp_1 = models.TextField(db_column='fabp_1', blank=True, null=True)  # Field name made lowercase.
+    fabp_2 = models.TextField(db_column='fabp_2', blank=True, null=True)  # Field name made lowercase.
+    fabp_4 = models.TextField(db_column='fabp_4', blank=True, null=True)  # Field name made lowercase.
+    fabp_5 = models.TextField(db_column='fabp_5', blank=True, null=True)  # Field name made lowercase.
     number_2171_g12d_1 = models.TextField(db_column='2171_G12D_1', blank=True, null=True)  # Field name made lowercase. Field renamed because it wasn't a valid Python identifier.
     number_2172_g12d_2 = models.TextField(db_column='2172_G12D_2', blank=True, null=True)  # Field name made lowercase. Field renamed because it wasn't a valid Python identifier.
-    g12d_3 = models.TextField(db_column='G12D_3', blank=True, null=True)  # Field name made lowercase.
-    g12d_4 = models.TextField(db_column='G12D_4', blank=True, null=True)  # Field name made lowercase.
+    g12d_3 = models.TextField(db_column='g12d_3', blank=True, null=True)  # Field name made lowercase.
+    g12d_4 = models.TextField(db_column='g12d_4', blank=True, null=True)  # Field name made lowercase.
     average_fabp = models.TextField(db_column='Average FABP', blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters.
     average_g12d = models.TextField(db_column='Average G12D', blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters.
     average_g12d_average_fabp = models.TextField(db_column='Average G12D/Average FABP', blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters.
-    id = models.TextField(db_column='Id', blank=True, null=False, primary_key=True)  # Field name made lowercase.
-    norm_fabp_1 = models.TextField(db_column='norm_FABP_1', blank=True, null=True)  # Field name made lowercase.
-    norm_fabp_2 = models.TextField(db_column='norm_FABP_2', blank=True, null=True)  # Field name made lowercase.
-    norm_fabp_4 = models.TextField(db_column='norm_FABP_4', blank=True, null=True)  # Field name made lowercase.
-    norm_fabp_5 = models.TextField(db_column='norm_FABP_5', blank=True, null=True)  # Field name made lowercase.
-    norm_2171_g12d_1 = models.TextField(db_column='norm_2171_G12D_1', blank=True, null=True)  # Field name made lowercase.
-    norm_2172_g12d_2 = models.TextField(db_column='norm_2172_G12D_2', blank=True, null=True)  # Field name made lowercase.
-    norm_g12d_3 = models.TextField(db_column='norm_G12D_3', blank=True, null=True)  # Field name made lowercase.
-    norm_g12d_4 = models.TextField(db_column='norm_G12D_4', blank=True, null=True)  # Field name made lowercase.
+    id = models.TextField(db_column='id', blank=True, null=False, primary_key=True)  # Field name made lowercase.
+    norm_fabp_1 = models.TextField(db_column='norm_fabp_1', blank=True, null=True)  # Field name made lowercase.
+    norm_fabp_2 = models.TextField(db_column='norm_fabp_2', blank=True, null=True)  # Field name made lowercase.
+    norm_fabp_4 = models.TextField(db_column='norm_fabp_4', blank=True, null=True)  # Field name made lowercase.
+    norm_fabp_5 = models.TextField(db_column='norm_fabp_5', blank=True, null=True)  # Field name made lowercase.
+    norm_2171_g12d_1 = models.TextField(db_column='norm_2171_g12d_1', blank=True, null=True)  # Field name made lowercase.
+    norm_2172_g12d_2 = models.TextField(db_column='norm_2172_g12d_2', blank=True, null=True)  # Field name made lowercase.
+    norm_g12d_3 = models.TextField(db_column='norm_g12d_3', blank=True, null=True)  # Field name made lowercase.
+    norm_g12d_4 = models.TextField(db_column='norm_g12d_4', blank=True, null=True)  # Field name made lowercase.
     average_norm_wt = models.TextField(db_column='Average norm WT', blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters.
     average_norm_g12d = models.TextField(db_column='Average norm G12D', blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters.
     average_norm_g12d_average_norm_wt = models.TextField(db_column='Average norm G12D/Average norm WT', blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters.
@@ -373,39 +373,39 @@ class SearchProtein(models.Model):
 
 class WholePancreasPhos(models.Model):
     type = models.TextField(blank=True, null=True)
-    proteinid = models.TextField(db_column='proteinID', blank=True, null=True)  # Field name made lowercase.
-    genesymbol = models.TextField(db_column='geneSymbol', blank=True, null=True)  # Field name made lowercase.
-    protdesc = models.TextField(db_column='protDesc', blank=True, null=True)  # Field name made lowercase.
-    siteposstr = models.TextField(db_column='sitePosStr', blank=True, null=True)  # Field name made lowercase.
-    motifpeptidestr = models.TextField(db_column='motifPeptideStr', blank=True, null=True)  # Field name made lowercase.
-    maxscorestr = models.TextField(db_column='maxScoreStr', blank=True, null=True)  # Field name made lowercase.
-    redundancystr = models.TextField(db_column='redundancyStr', blank=True, null=True)  # Field name made lowercase.
+    proteinid = models.TextField(db_column='proteinid', blank=True, null=True)  # Field name made lowercase.
+    genesymbol = models.TextField(db_column='genesymbol', blank=True, null=True)  # Field name made lowercase.
+    protdesc = models.TextField(db_column='protdesc', blank=True, null=True)  # Field name made lowercase.
+    siteposstr = models.TextField(db_column='siteposstr', blank=True, null=True)  # Field name made lowercase.
+    motifpeptidestr = models.TextField(db_column='motifpeptidestr', blank=True, null=True)  # Field name made lowercase.
+    maxscorestr = models.TextField(db_column='maxscorestr', blank=True, null=True)  # Field name made lowercase.
+    redundancystr = models.TextField(db_column='redundancystr', blank=True, null=True)  # Field name made lowercase.
     sequence = models.TextField(blank=True, null=True)
     default_num_quant = models.TextField(blank=True, null=True)
     wt_1 = models.TextField(blank=True, null=True)
     wt_2 = models.TextField(blank=True, null=True)
     wt_3 = models.TextField(blank=True, null=True)
     wt_4 = models.TextField(blank=True, null=True)
-    a146t_1 = models.TextField(db_column='A146T_1', blank=True, null=True)  # Field name made lowercase.
-    a146t_2 = models.TextField(db_column='A146T_2', blank=True, null=True)  # Field name made lowercase.
-    a146t_3 = models.TextField(db_column='A146T_3', blank=True, null=True)  # Field name made lowercase.
-    g12d_1 = models.TextField(db_column='G12D_1', blank=True, null=True)  # Field name made lowercase.
-    g12d_2 = models.TextField(db_column='G12D_2', blank=True, null=True)  # Field name made lowercase.
-    g12d_3 = models.TextField(db_column='G12D_3', blank=True, null=True)  # Field name made lowercase.
+    a146t_1 = models.TextField(db_column='a146t_1', blank=True, null=True)  # Field name made lowercase.
+    a146t_2 = models.TextField(db_column='a146t_2', blank=True, null=True)  # Field name made lowercase.
+    a146t_3 = models.TextField(db_column='a146t_3', blank=True, null=True)  # Field name made lowercase.
+    g12d_1 = models.TextField(db_column='g12d_1', blank=True, null=True)  # Field name made lowercase.
+    g12d_2 = models.TextField(db_column='g12d_2', blank=True, null=True)  # Field name made lowercase.
+    g12d_3 = models.TextField(db_column='g12d_3', blank=True, null=True)  # Field name made lowercase.
     norm_wt_1 = models.TextField(blank=True, null=True)
     norm_wt_2 = models.TextField(blank=True, null=True)
     norm_wt_3 = models.TextField(blank=True, null=True)
     norm_wt_4 = models.TextField(blank=True, null=True)
-    norm_a146t_1 = models.TextField(db_column='norm_A146T_1', blank=True, null=True)  # Field name made lowercase.
-    norm_a146t_2 = models.TextField(db_column='norm_A146T_2', blank=True, null=True)  # Field name made lowercase.
-    norm_a146t_3 = models.TextField(db_column='norm_A146T_3', blank=True, null=True)  # Field name made lowercase.
-    norm_g12d_1 = models.TextField(db_column='norm_G12D_1', blank=True, null=True)  # Field name made lowercase.
-    norm_g12d_2 = models.TextField(db_column='norm_G12D_2', blank=True, null=True)  # Field name made lowercase.
-    norm_g12d_3 = models.TextField(db_column='norm_G12D_3', blank=True, null=True)  # Field name made lowercase.
+    norm_a146t_1 = models.TextField(db_column='norm_a146t_1', blank=True, null=True)  # Field name made lowercase.
+    norm_a146t_2 = models.TextField(db_column='norm_a146t_2', blank=True, null=True)  # Field name made lowercase.
+    norm_a146t_3 = models.TextField(db_column='norm_a146t_3', blank=True, null=True)  # Field name made lowercase.
+    norm_g12d_1 = models.TextField(db_column='norm_g12d_1', blank=True, null=True)  # Field name made lowercase.
+    norm_g12d_2 = models.TextField(db_column='norm_g12d_2', blank=True, null=True)  # Field name made lowercase.
+    norm_g12d_3 = models.TextField(db_column='norm_g12d_3', blank=True, null=True)  # Field name made lowercase.
     average_norm_wt = models.TextField(db_column='Average norm WT', blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters.
     average_norm_g12d = models.TextField(db_column='Average norm G12D', blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters.
     average_norm_g12d_average_norm_wt = models.TextField(db_column='Average norm G12D/Average norm WT', blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters.
-    id = models.TextField(db_column='Id', blank=True, null=False, primary_key=True)  # Field name made lowercase.
+    id = models.TextField(db_column='id', blank=True, null=False, primary_key=True)  # Field name made lowercase.
 
     class Meta:
         managed = False
@@ -415,23 +415,23 @@ class WholePancreasPhos(models.Model):
 class WholePancreasPro(models.Model):
     protein_id = models.TextField(db_column='Protein Id', blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters.
     gene_symbol = models.TextField(db_column='Gene Symbol', blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters.
-    description = models.TextField(db_column='Description', blank=True, null=True)  # Field name made lowercase.
+    description = models.TextField(db_column='description', blank=True, null=True)  # Field name made lowercase.
     number_of_peptides = models.TextField(db_column='Number of peptides', blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters.
     wt_1 = models.TextField(blank=True, null=True)
     wt_2 = models.TextField(blank=True, null=True)
     wt_3 = models.TextField(blank=True, null=True)
     wt_4 = models.TextField(blank=True, null=True)
-    g12d_1 = models.TextField(db_column='G12D_1', blank=True, null=True)  # Field name made lowercase.
-    g12d_2 = models.TextField(db_column='G12D_2', blank=True, null=True)  # Field name made lowercase.
-    g12d_3 = models.TextField(db_column='G12D_3', blank=True, null=True)  # Field name made lowercase.
-    id = models.TextField(db_column='Id', blank=True, null=False, primary_key=True)  # Field name made lowercase.
+    g12d_1 = models.TextField(db_column='g12d_1', blank=True, null=True)  # Field name made lowercase.
+    g12d_2 = models.TextField(db_column='g12d_2', blank=True, null=True)  # Field name made lowercase.
+    g12d_3 = models.TextField(db_column='g12d_3', blank=True, null=True)  # Field name made lowercase.
+    id = models.TextField(db_column='id', blank=True, null=False, primary_key=True)  # Field name made lowercase.
     norm_wt_1 = models.TextField(blank=True, null=True)
     norm_wt_2 = models.TextField(blank=True, null=True)
     norm_wt_3 = models.TextField(blank=True, null=True)
     norm_wt_4 = models.TextField(blank=True, null=True)
-    norm_g12d_1 = models.TextField(db_column='norm_G12D_1', blank=True, null=True)  # Field name made lowercase.
-    norm_g12d_2 = models.TextField(db_column='norm_G12D_2', blank=True, null=True)  # Field name made lowercase.
-    norm_g12d_3 = models.TextField(db_column='norm_G12D_3', blank=True, null=True)  # Field name made lowercase.
+    norm_g12d_1 = models.TextField(db_column='norm_g12d_1', blank=True, null=True)  # Field name made lowercase.
+    norm_g12d_2 = models.TextField(db_column='norm_g12d_2', blank=True, null=True)  # Field name made lowercase.
+    norm_g12d_3 = models.TextField(db_column='norm_g12d_3', blank=True, null=True)  # Field name made lowercase.
     average_norm_wt = models.TextField(db_column='Average norm WT', blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters.
     average_norm_g12d = models.TextField(db_column='Average norm G12D', blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters.
     average_norm_g12d_average_norm_wt = models.TextField(db_column='Average norm G12D/Average norm WT', blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters.

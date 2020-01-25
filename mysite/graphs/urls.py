@@ -7,4 +7,6 @@ urlpatterns = [
     path('search_results', views.search_results, name="search_results"),
     path('', views.search, name='search'),
     path('test/<int:id>', views.graphs, name='test'),
+    path('about', views.about, name="about"),
+    path('contact', views.contact, name="contact")
 ]

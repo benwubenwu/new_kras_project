@@ -53,12 +53,12 @@
                     alt=""
                   />
             </a>
-            <a class="navbar-brand mr-5" href="{% url 'search' %}">Park Lab</a>
+            <a class="navbar-brand mr-5" href="{% url 'search' %}">Home</a>
 
             <!-- Topbar Search -->
             <form class="d-none flex-grow-1 d-lg-inline-block form-inline mx-auto my-2 mw-100 navbar-search" action="{% url 'search_results' %}">
               <div class="input-group">
-                <input type="text" class="form-control bg-light border-0" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2" name="user_input">
+                <input type="text" class="form-control bg-light border-0" placeholder="Enter gene name, protein name, etc." aria-label="Search" aria-describedby="basic-addon2" name="user_input">
                 <div class="input-group-append">
                   <button class="btn btn-info" type="submit">
                     <i class="fas fa-search fa-sm"></i>
@@ -68,8 +68,8 @@
             </form>
             <img src="https://cdn3.iconfinder.com/data/icons/linecons-free-vector-icons-pack/32/data-512.png" width="1.4%" height="1.4%" class="text-dark d-inline-block align-top mr-1 ml-5 ">
             <a class="navbar-brand mr-5" href="{% url 'search_results' %}">Data</a>
-            <a class="navbar-brand mr-5" href="/#publication">About</a>
-            <a class="navbar-brand mr-0" href="https://compbio.hms.harvard.edu/contact">Contact</a>
+            <a class="navbar-brand mr-5" href="{% url 'about' %}">About</a>
+            <a class="navbar-brand mr-0" href="{% url 'contact' %}">Contact</a>
         
             <!-- Topbar Navbar -->
             <ul class="navbar-nav ml-auto">
