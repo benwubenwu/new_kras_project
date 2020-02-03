@@ -3,7 +3,6 @@
 {% load static %} 
 {% block content%}
 {% load plotly_dash %}
-
 <div class="card mb-3">
   <div class="card-header text-dark">
     <i class="fas fa-table"></i>
@@ -36,7 +35,8 @@
       </table>
     </div>
   </div>
-  <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+  <div class="row">
+  </div>
 </div>
 <script>
   $('.mydatatable').DataTable({"oLanguage": {"sSearch": "Filter: "}});

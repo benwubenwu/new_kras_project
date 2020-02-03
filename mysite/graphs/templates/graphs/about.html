@@ -4,9 +4,23 @@
 {% block content %}
 {% load plotly_dash %}
 <div class="container bg-white text-dark">
-    <div class="row">
-        <h1>About</h1>
-    </div>
-    <p> Text description </p>
+<h1 align="center" class="my-2" id="about">About</h1>
+<h2 id="the-study">The study</h2>
+<p>This website is intended to allow for easy and interactive visualization of the proteomics and phosphoproteomics data analyzed by Brubaker <em>et al.</em> in <a href="https://www.sciencedirect.com/science/article/pii/S2405471219302388?via%3Dihub">&quot;Proteogenomic Network Analysis of Context-Specific KRAS Signaling in Mouse-to-Human Cross-Species Translation.&quot;</a> The study measured the effects of mutant <em>KRAS</em> G12D on the colon and pancreas in a preneoplastic and neoplastic state.</p>
+<p><img src="https://marlin-prod.literatumonline.com/cms/attachment/f316fa4d-23c0-486d-be2e-891ddb07e48e/fx1_lrg.jpg" width="40%" height="40%"></p>
+<h2 id="the-data">The data</h2>
+<p>The data presented on this website is the original proteomics and phosphoproteomics collected from mouse colon and pancreas. Both organs were collected in a preneoplastic state and a neoplastic state with either a <em>KRAS</em> G12D mutation or wild-type <em>KRAS</em>. The neoplastic state for colon was replicated by inducing a loss-of-function mutation to <em>APC</em>. In pancreas, this state was modeled by inducing a loss-of-function mutation to <em>TP53</em>. These two genes were chosen as they best represent the mutations found in the cancer of each organ.</p>
+<p>The proteomics was conducted quantitatively using TMT-labeled mass spectrometry (MS). The <em>KRAS</em> mutant and wild-type samples for each organ and state (preneoplastic and neoplastic) were run together.</p>
+<h3 id="searching-the-data">Searching the data</h3>
+<p>To search for a gene or protein, enter its full or partial name into the search bar at the top of the page and hit &quot;Enter.&quot; This will bring you to a table of the entries that statisfy your search term in any of the table's categories: &quot;Gene Symbol,&quot; &quot;Protein ID,&quot; and &quot;Description.&quot; The results can be further filtered using the &quot;Filter&quot; box in the top-right. The data for the desired protein in the table can be viewed by clicking on the entry number in the left-most column.</p>
+<p>Selecting an entry will bring up its proteomics data - the phosphoproteomics will be included, soon. Along the top are cards with various pieces of information on the protein.</p>
+<h3 id="understanding-the-plots">Understanding the plots</h3>
+<p>Up to four box-plots will be shown for a protein. The box-plots are &quot;Colon Empithelium&quot; (<em>APC</em> WT), &quot;Apc-mutant Colon&quot; (<em>APC</em> mutant), &quot;Whole Pancreas&quot; (<em>TP53</em> WT), and &quot;Tp53-mutant Pancreas&quot; (<em>TP53</em> mutant). Each box-plot shows the data for mice with either <em>KRAS</em> WT or <em>KRAS</em> G12D. If a plot is empty, that means the protein was not identified in that MS analysis.</p>
+<p>The y-axis for the proteomics indicates the normalized level of protein. Each mouse organ run through the MS contained 1000 mg of protein. Thus, within a single run of the MS, the total protein for each mouse should be equivalent. The amount of each peptide measured was normalized such that the total amount summed to 1000 for each mouse.</p>
+<p>Each organ and state (preneoplastic and neoplastic) is displayed separately because they were run through the MS, separately. Thus, their values cannot be directly compared. Instead, the plot below the box-plots allows one to easily compare the ratio of protein in the <em>KRAS</em> G12D to <em>KRAS</em> WT in each organ. Each point indicates the lagarithm of this ratio and the horizontal line indicates the 95% confidence interval (bootstrapped). Because the ratios are log-scaled, if the protein was present in equal amounts in the <em>KRAS</em> mutant and wild-type organs, the point will lie at 0. Further, if the protein was more abundant in the <em>KRAS</em> WT organ, the log-transformed ratio will be negative. The oppositite is true if the protein was more abundant in the <em>KRAS</em> G12D organ.</p>
+<h3 id="data-availability">Data availability</h3>
+<p>The entire dataset can be downloaded at the &quot;Data&quot; page. The spreadsheets include the original and normalized peptide levels for each sample. The phosphoproteomics data will be made available, soon.</p>
+
+    
 </div>
 {% endblock %}

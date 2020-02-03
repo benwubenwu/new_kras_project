@@ -6,7 +6,6 @@ from plotly.offline import plot
 import plotly.graph_objects as go
 from django.http import HttpRequest
 from django.db.models import Q
-
 # Create your views here.
 
 
@@ -65,6 +64,14 @@ def graphs(request, id):
         pancreas_tumor_pro_average_norm_wt = pancreas_tumor_pro.average_norm_wt
         pancreas_tumor_pro_average_norm_g12d = pancreas_tumor_pro.average_norm_g12d
         pancreas_tumor_pro_average_norm_g12d_average_norm_wt = pancreas_tumor_pro.ratio_norm_g12d_norm_wt
+        pancreas_tumor_pro_p_value = pancreas_tumor_pro.p_value
+        pancreas_tumor_pro_boot_ratio = pancreas_tumor_pro.boot_ratio
+        pancreas_tumor_pro_lower_ci = pancreas_tumor_pro.lower_ci
+        pancreas_tumor_pro_upper_ci = pancreas_tumor_pro.upper_ci
+        pancreas_tumor_pro_log_ratio = pancreas_tumor_pro.log_ratio
+        pancreas_tumor_pro_log_lower_ci_diff = pancreas_tumor_pro.log_lower_ci_diff
+        pancreas_tumor_pro_log_upper_ci_diff = pancreas_tumor_pro.log_upper_ci_diff
+
     except PancreasTumorPro.DoesNotExist:
         pancreas_tumor_pro = None
 
@@ -81,6 +88,14 @@ def graphs(request, id):
         scraped_colon_pro_average_norm_wt = scraped_colon_pro.average_norm_wt
         scraped_colon_pro_average_norm_g12d = scraped_colon_pro.average_norm_g12d
         scraped_colon_pro_average_norm_g12d_average_norm_wt = scraped_colon_pro.ratio_norm_g12d_norm_wt
+        scraped_colon_pro_p_value = scraped_colon_pro.p_value
+        scraped_colon_pro_boot_ratio = scraped_colon_pro.boot_ratio
+        scraped_colon_pro_lower_ci = scraped_colon_pro.lower_ci
+        scraped_colon_pro_upper_ci = scraped_colon_pro.upper_ci
+        scraped_colon_pro_log_ratio = scraped_colon_pro.log_ratio
+        scraped_colon_pro_log_lower_ci_diff = scraped_colon_pro.log_lower_ci_diff
+        scraped_colon_pro_log_upper_ci_diff = scraped_colon_pro.log_upper_ci_diff
+
     except ScrapedColonPro.DoesNotExist:
         scraped_colon_pro = None
 
@@ -96,6 +111,13 @@ def graphs(request, id):
         whole_pancreas_pro_average_norm_wt = whole_pancreas_pro.average_norm_wt
         whole_pancreas_pro_average_norm_g12d = whole_pancreas_pro.average_norm_g12d
         whole_pancreas_pro_average_norm_g12d_average_norm_wt = whole_pancreas_pro.ratio_norm_g12d_norm_wt
+        whole_pancreas_pro_p_value = whole_pancreas_pro.p_value
+        whole_pancreas_pro_boot_ratio = whole_pancreas_pro.boot_ratio
+        whole_pancreas_pro_lower_ci = whole_pancreas_pro.lower_ci
+        whole_pancreas_pro_upper_ci = whole_pancreas_pro.upper_ci
+        whole_pancreas_pro_log_ratio = whole_pancreas_pro.log_ratio
+        whole_pancreas_pro_log_lower_ci_diff = whole_pancreas_pro.log_lower_ci_diff
+        whole_pancreas_pro_log_upper_ci_diff = whole_pancreas_pro.log_upper_ci_diff
     except WholePancreasPro.DoesNotExist:
         whole_pancreas_pro = None
 
@@ -114,6 +136,14 @@ def graphs(request, id):
         colon_tumor_pro_average_norm_wt = colon_tumor_pro.average_norm_wt
         colon_tumor_pro_average_norm_g12d = colon_tumor_pro.average_norm_g12d
         colon_tumor_pro_average_norm_g12d_average_norm_wt = colon_tumor_pro.ratio_norm_g12d_norm_wt
+        colon_tumor_pro_p_value = colon_tumor_pro.p_value
+        colon_tumor_pro_boot_ratio = colon_tumor_pro.boot_ratio
+        colon_tumor_pro_lower_ci = colon_tumor_pro.lower_ci
+        colon_tumor_pro_upper_ci = colon_tumor_pro.upper_ci
+        colon_tumor_pro_log_ratio = colon_tumor_pro.log_ratio
+        colon_tumor_pro_log_lower_ci_diff = colon_tumor_pro.log_lower_ci_diff
+        colon_tumor_pro_log_upper_ci_diff = colon_tumor_pro.log_upper_ci_diff
+
     except ColonTumorPro.DoesNotExist:
         colon_tumor_pro = None
 
@@ -139,7 +169,7 @@ def graphs(request, id):
 
     def box_ce():
         layout = dict(
-            title="Colon Epithelium",
+            title="",
             template="plotly_white",
             showlegend=False
         )
@@ -157,13 +187,17 @@ def graphs(request, id):
         except:
             fig.add_trace(go.Box(y=[], name='Colonic epithelium WT'))
             fig.add_trace(go.Box(y=[], name='Colonic epithelium G12D'))
+        fig.update_layout(
+            xaxis={'title': 'Colonic epithelium'},
+            yaxis={'title': None}
+        )
         plot_div = plot(fig, output_type='div', include_plotlyjs=False)
         return plot_div
 
     def box_ct():
 
         layout = dict(
-            title="Apc-mutant Colon",
+            title="",
             template="plotly_white",
             showlegend=False
         )
@@ -181,12 +215,16 @@ def graphs(request, id):
         except:
             fig.add_trace(go.Box(y=[], name='Apc-mutant colon WT'))
             fig.add_trace(go.Box(y=[], name='Apc-mutant colon G12D'))
-        plot_div = plot(fig, output_type='div', include_plotlyjs=False)
+        fig.update_layout(
+            xaxis={'title': 'Apc-mutant colon'},
+            yaxis={'title': None}
+        )  
+        plot_div = plot(fig, output_type='div', include_plotlyjs=False)      
         return plot_div
 
     def box_wp():
         layout = dict(
-            title="Whole Pancreas",
+            title="",
             template="plotly_white",
             showlegend=False
         )
@@ -204,13 +242,17 @@ def graphs(request, id):
         except:
             fig.add_trace(go.Box(y=[], name='Whole pancreas WT'))
             fig.add_trace(go.Box(y=[], name='Whole pancreas G12D'))
-        plot_div = plot(fig, output_type='div', include_plotlyjs=False)
+        fig.update_layout(
+            xaxis={'title': 'Whole pancreas'},
+            yaxis={'title': None}
+        )              
+        plot_div = plot(fig, output_type='div', include_plotlyjs=False)  
         return plot_div
 
     def box_pt():
 
         layout = dict(
-            title="Tp53-mutant Pancreas",
+            title="",
             template="plotly_white",
             showlegend=False
         )
@@ -230,7 +272,11 @@ def graphs(request, id):
         except:
             fig.add_trace(go.Box(y=[], name='Tp53-mutant pancreas WT'))
             fig.add_trace(go.Box(y=[], name='Tp53-mutant pancreas G12D'))
-        plot_div = plot(fig, output_type='div', include_plotlyjs=False)
+        fig.update_layout(
+            xaxis={'title': 'Tp53-mutant pancreas'},
+            yaxis={'title': None}
+        )   
+        plot_div = plot(fig, output_type='div', include_plotlyjs=False)             
         return plot_div
 
     def scatter():
@@ -239,38 +285,51 @@ def graphs(request, id):
             # paper_bgcolor="rgba(0,0,0,0)",
             # plot_bgcolor="rgba(0,0,0,0)",
             yaxis=dict(showgrid=False, zeroline=True,
-                       showline=True),
+                       showline=True,categoryarray=['Tp53-mutant pancreas','Whole pancreas','Apc-mutant colon','Colonic epithelium'],categoryorder="array"),
             xaxis=dict(showgrid=False, showline=True, rangemode='tozero'),
             showlegend=False
         )
         fig = go.Figure(layout=layout)
         try:
-            ptp_ratio = pancreas_tumor_pro_average_norm_g12d_average_norm_wt
+            ptp_ratio = pancreas_tumor_pro_log_ratio
+            ptp_lower = pancreas_tumor_pro_log_lower_ci_diff
+            ptp_upper = pancreas_tumor_pro_log_upper_ci_diff
             fig.add_trace(go.Scatter(
-                x=[ptp_ratio], y=['Tp53-mutant pancreas'], mode="markers", marker_color='rgb(102,102,102)', marker=dict(size=[10])))
+                x=[ptp_ratio], y=['Tp53-mutant pancreas'], error_x=dict(type='data', symmetric=False, array=[ptp_upper], arrayminus=[ptp_lower]), mode="markers", marker_color='rgb(102,102,102)', marker=dict(size=[10])))
         except:
             test = 0
         try:
-            ctp_ratio = colon_tumor_pro_average_norm_g12d_average_norm_wt
+            ctp_ratio = colon_tumor_pro_log_ratio
+            ctp_lower = colon_tumor_pro_log_lower_ci_diff
+            ctp_upper = colon_tumor_pro_log_upper_ci_diff
             fig.add_trace(go.Scatter(
-                x=[ctp_ratio], y=['Apc-mutant colon'], mode="markers", marker_color='indianred', marker=dict(size=[10])))
+                x=[ctp_ratio], y=['Apc-mutant colon'], error_x=dict(type='data', symmetric=False, array=[ctp_upper], arrayminus=[ctp_lower]), mode="markers", marker_color='indianred', marker=dict(size=[10])))
         except:
             test = 0
         try:
-            scp_ratio = scraped_colon_pro_average_norm_g12d_average_norm_wt
+            scp_ratio = scraped_colon_pro_log_ratio
+            scp_lower = scraped_colon_pro_log_lower_ci_diff
+            scp_upper = scraped_colon_pro_log_upper_ci_diff
             fig.add_trace(go.Scatter(
-                x=[scp_ratio], y=['Colonic epithelium'], mode="markers", marker_color='#636EFA', marker=dict(size=[10])))
+                x=[scp_ratio], y=['Colonic epithelium'], error_x=dict(type='data', symmetric=False, array=[scp_upper], arrayminus=[scp_lower]), mode="markers", marker_color='#636EFA', marker=dict(size=[10])))
         except:
             test = 0
         try:
-            wpp_ratio = whole_pancreas_pro_average_norm_g12d_average_norm_wt
+            wpp_ratio = whole_pancreas_pro_log_ratio
+            wpp_lower = whole_pancreas_pro_log_lower_ci_diff
+            wpp_upper = whole_pancreas_pro_log_upper_ci_diff
             fig.add_trace(go.Scatter(
-                x=[wpp_ratio], y=['Whole pancreas'], mode="markers", marker_color='lightseagreen', marker=dict(size=[10])))
+                x=[wpp_ratio], y=['Whole pancreas'], error_x=dict(type='data', symmetric=False, array=[wpp_upper], arrayminus=[wpp_lower]), mode="markers", marker_color='lightseagreen', marker=dict(size=[10])))
         except:
             test = 0
-        fig.add_shape(go.layout.Shape(type="line", x0=1, x1=1,
-                                      y0=-1, y1=3.1, line=dict(color="#5bc0de", width=1.5, dash='dot')))
-        fig.update_shapes(dict(xref='x'))
+        # fig.add_shape(go.layout.Shape(type="line", x0=1, x1=1,
+        #                               y0=-1, y1=3.1, line=dict(color="#5bc0de", width=1.5, dash='dot')))
+        # fig.update_shapes(dict(xref='x'))
+        # fig.update_layout(xaxis_type="log")
+        fig.update_layout(
+            xaxis={'title': 'Ratio of levels in G12D to WT (log-scaled)'},
+            yaxis={'title': None}
+        )
         plot_div = plot(fig, output_type='div', include_plotlyjs=False)
         return plot_div
 
@@ -282,6 +341,14 @@ def graphs(request, id):
         'gene_symbol': gene_symbol,
         'all_pro': all_pro,
         'scatter': scatter(),
+        'scp': scraped_colon_pro,
+        'ctp': colon_tumor_pro,
+        'ptp': pancreas_tumor_pro,
+        'wpp': whole_pancreas_pro
+        # 'scp_pvalue':scraped_colon_pro_p_value,
+        # 'ctp_pvalue':colon_tumor_pro_p_value,
+        # 'ptp_pvalue':pancreas_tumor_pro_p_value,
+        # 'wpp_pvalue':whole_pancreas_pro_p_value
         # 'colon_tumor_phos': colon_tumor_phos,
         # 'scraped_colon_phos': scraped_colon_phos,
         # 'whole_pancreas_phos': whole_pancreas_phos,
