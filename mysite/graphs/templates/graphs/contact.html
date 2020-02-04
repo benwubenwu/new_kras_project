@@ -3,19 +3,26 @@
 {% load static %} 
 {% block content %}
 {% load plotly_dash %}
-<div class="container bg-white text-dark">
+
+<div class="text-center bg-white container text-dark mt-3">
     <div class="row">
-        <h1 class="my-2 mx-auto">Contact</h1>
+        <h1 class="my-2 mb-5 mx-auto">Contact</h1>
     </div>
-    <div class="row my-2">
-        <a href="https://www.haigislab.org/contact">Contact the Haigis Lab</a>
-    </div>
-    <div class="row my-2">
-        <a href="https://compbio.hms.harvard.edu/contact">Contact the Park Lab</a>
-    </div>
-    <div class="row my-2">
-        <a href="https://www.specificancer.org/contact-us">Contact SpecifiCancer</a>
+    <div class="row">
+        <div class="col-md-4">
+            <h4>The Haigis Lab</h4>
+            <p class="text-center"><a class="btn btn-info" href="https://www.haigislab.org/contact" role="button">Contact &raquo;</a></p>
+        </div>
+        <div class="col-md-4">
+            <h4>The Park Lab</h4>
+            <p class="text-center"><a class="btn btn-info" href="https://compbio.hms.harvard.edu/contact" role="button">Contact &raquo;</a></p>
+        </div>
+        <div class="col-md-4">
+            <h4>SpecifiCancer</h4>
+            <p class="text-center"><a class="btn btn-info" href="https://www.specificancer.org/contact-us" role="button">Contact &raquo;</a></p>
+        </div>
     </div>
 </div>
+
 
 {% endblock %}
