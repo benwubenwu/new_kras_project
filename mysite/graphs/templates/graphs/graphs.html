@@ -1,63 +1,62 @@
-{% extends './base.html' %} 
+{% extends './base.html' %}
 
-{% load static %} 
+{% load static %}
 {% block content %}
 {% load plotly_dash %}
 
 {% comment %} <h1 class="text-center">{{ gene1name }}</h1> {% endcomment %}
 
 {% comment %} <div class="card" style="height: 100%; width: 100%">
-{{ plot | safe }}
+  {{ plot | safe }}
 </div> {% endcomment %}
 {% comment %} <div class="{% plotly_class name="SimpleExample" %} card" style="height: 100%; width: 100%">
-    {% plotly_app name="SimpleExample" ratio=0.65 %}
-</div>  {% endcomment %}
+  {% plotly_app name="SimpleExample" ratio=0.65 %}
+</div> {% endcomment %}
 
 {% comment %} <div class="card text-center" style="height: 100%; width: 100%">
 </div> {% endcomment %}
 
 
-  <!-- Content Row -->
-  <div class="row">
-    <!-- Earnings (Monthly) Card Example -->
-    <div class="col-xl-4 col-md-6 mb-4">
-      <div class="card border-left-info shadow h-100 py-2">
-        <div class="card-body">
-          <div class="row no-gutters align-items-center">
-            <div class="col mr-2">
-              <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Gene Symbol</div>
-              <div class="h5 mb-0 font-weight-bold text-gray-800">{{all_pro.gene_symbol}}</div>
-            </div>
+<!-- Content Row -->
+<div class="row">
+  <!-- Earnings (Monthly) Card Example -->
+  <div class="col-xl-4 col-md-6 mb-4">
+    <div class="card border-left-info shadow h-100 py-2">
+      <div class="card-body">
+        <div class="row no-gutters align-items-center">
+          <div class="col mr-2">
+            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Gene Symbol</div>
+            <div class="h5 mb-0 font-weight-bold text-gray-800">{{all_pro.gene_symbol}}</div>
           </div>
         </div>
       </div>
     </div>
+  </div>
 
-    <!-- Earnings (Monthly) Card Example -->
-    <div class="col-xl-4 col-md-6 mb-4">
-      <div class="card border-left-info shadow h-100 py-2">
-        <div class="card-body">
-          <div class="row no-gutters align-items-center">
-            <div class="col mr-2">
-              <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Protein Id</div>
-              <div class="h5 mb-0 font-weight-bold text-gray-800">{{ all_pro.protein_id }}</div>
-            </div>
+  <!-- Earnings (Monthly) Card Example -->
+  <div class="col-xl-4 col-md-6 mb-4">
+    <div class="card border-left-info shadow h-100 py-2">
+      <div class="card-body">
+        <div class="row no-gutters align-items-center">
+          <div class="col mr-2">
+            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Protein Id</div>
+            <div class="h5 mb-0 font-weight-bold text-gray-800">{{ all_pro.protein_id }}</div>
           </div>
         </div>
       </div>
     </div>
+  </div>
 
-    <!-- Earnings (Monthly) Card Example -->
-    <div class="col-xl-4 col-md-6 mb-4">
-      <div class="card border-left-info shadow h-100 py-2">
-        <div class="card-body">
-          <div class="row no-gutters align-items-center">
-            <div class="col mr-2">
-              <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Description</div>
-              <div class="row no-gutters align-items-center">
-                <div class="col-auto">
-                  <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">{{ all_pro.description }}</div>
-                </div>
+  <!-- Earnings (Monthly) Card Example -->
+  <div class="col-xl-4 col-md-6 mb-4">
+    <div class="card border-left-info shadow h-100 py-2">
+      <div class="card-body">
+        <div class="row no-gutters align-items-center">
+          <div class="col mr-2">
+            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Description</div>
+            <div class="row no-gutters align-items-center">
+              <div class="col-auto">
+                <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">{{ all_pro.description }}</div>
               </div>
             </div>
           </div>
@@ -65,195 +64,137 @@
       </div>
     </div>
   </div>
+</div>
 
-  <!-- Content Row -->
+<!-- Content Row -->
 
-  <div class="row">
-    <!-- Area Chart -->
-    <div class="col-xl-3">
-      <div class="card shadow mb-4">
-        <!-- Card Header - Dropdown -->
-        <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-          <h6 class="m-0 font-weight-bold text-dark">TMT Relative Abundance</h6>
-          <div class="dropdown no-arrow">
-            <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
-            </a>
-            <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
-              <div class="dropdown-header">Dropdown Header:</div>
-              <a class="dropdown-item" href="#">Action</a>
-              <a class="dropdown-item" href="#">Another action</a>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="#">Something else here</a>
-            </div>
-          </div>
-        </div>
-        <!-- Card Body -->
-        <div class="row">
-          <div class="card-body">
-            {{ box_ce | safe }}
-          </div>
-        </div>
-        <div class="card-footer text-dark">
-          {% if not scp %}
-          <div> N/A </div>
-          {% elif scp.p_value <= 0.05 %}
-          <div class="font-weight-bold"> p-value: {{scp.p_value}} </div>
-          {% else %}
-          p-value: {{scp.p_value}}
-          {% endif %}
+<div class="row">
+  <!-- Area Chart -->
+  <div class="col-xl-3">
+    <div class="card shadow mb-4">
+      <!-- Card Header - Dropdown -->
+      <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+        <h6 class="m-0 font-weight-bold text-dark">TMT Relative Abundance</h6>
+      </div>
+      <!-- Card Body -->
+      <div class="row">
+        <div class="card-body">
+          {{ box_ce | safe }}
         </div>
       </div>
-    </div>
-    <div class="col-xl-3">
-      <div class="card shadow mb-4">
-        <!-- Card Header - Dropdown -->
-        <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-          <h6 class="m-0 font-weight-bold text-dark">TMT Relative Abundance</h6>
-          <div class="dropdown no-arrow">
-            <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
-            </a>
-            <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
-              <div class="dropdown-header">Dropdown Header:</div>
-              <a class="dropdown-item" href="#">Action</a>
-              <a class="dropdown-item" href="#">Another action</a>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="#">Something else here</a>
-            </div>
-          </div>
-        </div>
-        <!-- Card Body -->
-        <div class="row">
-          <div class="card-body">
-            {{ box_ct | safe }}
-          </div>
-        </div>
-        <div class="card-footer text-dark">
-          {% if not ctp %}
-          <div> N/A </div>
-          {% elif ctp.p_value <= 0.05 %}
-          <div class="font-weight-bold"> p-value: {{ctp.p_value}} </div>
-          {% else %}
-          p-value: {{ctp.p_value}}
-          {% endif %}
-        </div>
+      <div class="card-footer text-dark">
+        {% if not scp %}
+        <div> N/A </div>
+        {% elif scp.p_value <= 0.05 %}
+        <div class="font-weight-bold"> p-value: {{scp.p_value}} </div>
+        {% else %}
+        p-value: {{scp.p_value}}
+        {% endif %}
       </div>
     </div>
-    <div class="col-xl-3">
-      <div class="card shadow mb-4">
-        <!-- Card Header - Dropdown -->
-        <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-          <h6 class="m-0 font-weight-bold text-dark">TMT Relative Abundance</h6>
-          <div class="dropdown no-arrow">
-            <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
-            </a>
-            <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
-              <div class="dropdown-header">Dropdown Header:</div>
-              <a class="dropdown-item" href="#">Action</a>
-              <a class="dropdown-item" href="#">Another action</a>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="#">Something else here</a>
-            </div>
-          </div>
-        </div>
-        <!-- Card Body -->
-        <div class="row">
-          <div class="card-body">
-            {{ box_wp | safe }}
-          </div>
-        </div>
-        <div class="card-footer text-dark">
-          {% if not wpp %}
-          <div> N/A </div>
-          {% elif wpp.p_value <= 0.05 %}
-          <div class="font-weight-bold"> p-value: {{wpp.p_value}} </div>
-          {% else %}
-          p-value: {{wpp.p_value}}
-          {% endif %}
+  </div>
+  <div class="col-xl-3">
+    <div class="card shadow mb-4">
+      <!-- Card Header - Dropdown -->
+      <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+        <h6 class="m-0 font-weight-bold text-dark">TMT Relative Abundance</h6>
+      </div>
+      <!-- Card Body -->
+      <div class="row">
+        <div class="card-body">
+          {{ box_ct | safe }}
         </div>
       </div>
-    </div>
-    <div class="col-xl-3">
-      <div class="card shadow mb-4">
-        <!-- Card Header - Dropdown -->
-        <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-          <h6 class="m-0 font-weight-bold text-dark">TMT Relative Abundance</h6>
-          <div class="dropdown no-arrow">
-            <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
-            </a>
-            <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
-              <div class="dropdown-header">Dropdown Header:</div>
-              <a class="dropdown-item" href="#">Action</a>
-              <a class="dropdown-item" href="#">Another action</a>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="#">Something else here</a>
-            </div>
-          </div>
-        </div>
-        <!-- Card Body -->
-        <div class="row">
-          <div class="card-body">
-            {{ box_pt | safe }}
-          </div>
-        </div>
-        <div class="card-footer text-dark">
-          {% if not ptp %}
-          <div> N/A </div>
-          {% elif ptp.p_value <= 0.05 %}
-          <div class="font-weight-bold"> p-value: {{ptp.p_value}} </div>
-          {% else %}
-          p-value: {{ptp.p_value}}
-          {% endif %}
-        </div>
+      <div class="card-footer text-dark">
+        {% if not ctp %}
+        <div> N/A </div>
+        {% elif ctp.p_value <= 0.05 %}
+        <div class="font-weight-bold"> p-value: {{ctp.p_value}} </div>
+        {% else %}
+        p-value: {{ctp.p_value}}
+        {% endif %}
       </div>
     </div>
-    <div class="col-lg-12">
-      <div class="card shadow mb-4">
-        <!-- Card Header - Dropdown -->
-        <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-          <h6 class="m-0 font-weight-bold text-dark">Ratio of Levels in G12D to WT</h6>
-          <div class="dropdown no-arrow">
-            <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
-            </a>
-            <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
-              <div class="dropdown-header">Dropdown Header:</div>
-              <a class="dropdown-item" href="#">Action</a>
-              <a class="dropdown-item" href="#">Another action</a>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="#">Something else here</a>
-            </div>
-          </div>
+  </div>
+  <div class="col-xl-3">
+    <div class="card shadow mb-4">
+      <!-- Card Header - Dropdown -->
+      <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+        <h6 class="m-0 font-weight-bold text-dark">TMT Relative Abundance</h6>
+      </div>
+      <!-- Card Body -->
+      <div class="row">
+        <div class="card-body">
+          {{ box_wp | safe }}
         </div>
-        <!-- Card Body -->
-        <div class="row">
-          <div class="card-body">
-            {{ scatter | safe }}
-          </div>
+      </div>
+      <div class="card-footer text-dark">
+        {% if not wpp %}
+        <div> N/A </div>
+        {% elif wpp.p_value <= 0.05 %}
+        <div class="font-weight-bold"> p-value: {{wpp.p_value}} </div>
+        {% else %}
+        p-value: {{wpp.p_value}}
+        {% endif %}
+      </div>
+    </div>
+  </div>
+  <div class="col-xl-3">
+    <div class="card shadow mb-4">
+      <!-- Card Header - Dropdown -->
+      <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+        <h6 class="m-0 font-weight-bold text-dark">TMT Relative Abundance</h6>
+      </div>
+      <!-- Card Body -->
+      <div class="row">
+        <div class="card-body">
+          {{ box_pt | safe }}
+        </div>
+      </div>
+      <div class="card-footer text-dark">
+        {% if not ptp %}
+        <div> N/A </div>
+        {% elif ptp.p_value <= 0.05 %}
+        <div class="font-weight-bold"> p-value: {{ptp.p_value}} </div>
+        {% else %}
+        p-value: {{ptp.p_value}}
+        {% endif %}
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-12">
+    <div class="card shadow mb-4">
+      <!-- Card Header - Dropdown -->
+      <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+        <h6 class="m-0 font-weight-bold text-dark">Ratio of Levels in G12D to WT</h6>
+      </div>
+      <!-- Card Body -->
+      <div class="row">
+        <div class="card-body">
+          {{ scatter | safe }}
         </div>
       </div>
     </div>
   </div>
-  <!-- <div class="row">
-    <div class="col-lg-4">
-      <div class="dropdown mb-4">
-        <button class="btn btn-info dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Phosphosites
-        </button>
-        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-          {% if not colon_tumor_phos and scraped_colon_phos%}
-          N/A
-          {% else %}
-            {% for i in colon_tumor_phos %}
-            <a class="dropdown-item" href="#">{{i.site_position}}</a>
-            {% endfor %}
-          {% endif %}
-        </div>
+</div>
+<!-- <div class="row">
+  <div class="col-lg-4">
+    <div class="dropdown mb-4">
+      <button class="btn btn-info dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+        aria-haspopup="true" aria-expanded="false">
+        Phosphosites
+      </button>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        {% if not colon_tumor_phos and scraped_colon_phos%}
+        N/A
+        {% else %}
+        {% for i in colon_tumor_phos %}
+        <a class="dropdown-item" href="#">{{i.site_position}}</a>
+        {% endfor %}
+        {% endif %}
       </div>
     </div>
-  </div> -->
+  </div>
+</div> -->
 
-{% endblock %} 
+{% endblock %}
